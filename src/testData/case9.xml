@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  IEEE 9-bus test case for Vjetroelektrana DFIG plugin.
+  Based on the Anderson-Fouad 9-bus system.
+  Generator 2 is designated as DFIG (wind turbine).
+  Generators 1 and 3 use the standard synchronous model.
+  All values in p.u. on 100 MVA base unless stated otherwise.
+-->
+<PowerSystem name="case9" baseMVA="100">
+
+  <!-- Default DFIG parameters (applied to generators marked as DFIG) -->
+  <DFIGDefaults xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+                KV="10.0" vref="1.0" Popt="0.5" OmegaB="314.159"
+                omega_m0="1.012" i_rq0="-0.15" i_rd0="0.05"/>
+
+  <!-- Default standard gen parameters (classical model) -->
+  <StdGenDefaults xd_prime="0.0608" H="23.64" D="0.0"
+                  OmegaB="314.159" E_prime="1.05"
+                  delta0="0.0" omega0="1.0"/>
+
+  <Buses>
+    <Bus number="1"  type="3" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="16.5"  Vm="1.040" Va="0.0"/>
+    <Bus number="2"  type="2" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="18.0"  Vm="1.025" Va="9.28"/>
+    <Bus number="3"  type="2" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="13.8"  Vm="1.025" Va="4.66"/>
+    <Bus number="4"  type="1" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="230.0" Vm="1.026" Va="-2.22"/>
+    <Bus number="5"  type="1" Pd="125.0"  Qd="50.0"  Gs="0" Bs="0" baseKV="230.0" Vm="0.996" Va="-3.99"/>
+    <Bus number="6"  type="1" Pd="90.0"   Qd="30.0"  Gs="0" Bs="0" baseKV="230.0" Vm="1.013" Va="-3.69"/>
+    <Bus number="7"  type="1" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="230.0" Vm="1.026" Va="3.72"/>
+    <Bus number="8"  type="1" Pd="100.0"  Qd="35.0"  Gs="0" Bs="0" baseKV="230.0" Vm="1.016" Va="0.73"/>
+    <Bus number="9"  type="1" Pd="0"      Qd="0"     Gs="0" Bs="0" baseKV="230.0" Vm="1.032" Va="1.97"/>
+  </Buses>
+
+  <Branches>
+    <Branch from="1" to="4" r="0.0000" x="0.0576" b="0.000"  rateA="250" tap="1" shift="0"/>
+    <Branch from="2" to="7" r="0.0000" x="0.0625" b="0.000"  rateA="250" tap="1" shift="0"/>
+    <Branch from="3" to="9" r="0.0000" x="0.0586" b="0.000"  rateA="300" tap="1" shift="0"/>
+    <Branch from="4" to="5" r="0.0100" x="0.0850" b="0.176"  rateA="250" tap="0" shift="0"/>
+    <Branch from="4" to="6" r="0.0170" x="0.0920" b="0.158"  rateA="150" tap="0" shift="0"/>
+    <Branch from="5" to="7" r="0.0320" x="0.1610" b="0.306"  rateA="250" tap="0" shift="0"/>
+    <Branch from="6" to="9" r="0.0390" x="0.1700" b="0.358"  rateA="150" tap="0" shift="0"/>
+    <Branch from="7" to="8" r="0.0085" x="0.0720" b="0.149"  rateA="250" tap="0" shift="0"/>
+    <Branch from="8" to="9" r="0.0119" x="0.1008" b="0.209"  rateA="150" tap="0" shift="0"/>
+  </Branches>
+
+  <Generators>
+    <!-- Gen 1: Slack bus — standard synchronous generator -->
+    <Gen bus="1" number="1" Pg="71.6"  Qg="27.05" Qmax="300" Qmin="-300"
+         Vs="1.040" mBase="247.5">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.0566"
+              delta0="0.0401" omega0="1.0"/>
+    </Gen>
+
+    <!-- Gen 2: DFIG wind turbine at bus 2 -->
+    <Gen bus="2" number="2" Pg="163.0" Qg="6.65"  Qmax="300" Qmin="-300"
+         Vs="1.025" mBase="192.0">
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.025" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
+    </Gen>
+
+    <!-- Gen 3: Standard synchronous generator -->
+    <Gen bus="3" number="3" Pg="85.0"  Qg="10.86" Qmax="300" Qmin="-300"
+         Vs="1.025" mBase="128.0">
+      <StdGen xd_prime="0.1813" H="6.4"  D="0.0"
+              OmegaB="314.159" E_prime="1.0502"
+              delta0="0.1522" omega0="1.0"/>
+    </Gen>
+  </Generators>
+
+</PowerSystem>
