@@ -470,7 +470,7 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
         const auto& g = ps.generators[i];
         int id = g.number;
 
-        buf.appendFormat("\t// Generator %d (bus %d) — %s\n",
+        buf.appendFormat("\t// Generator %d (bus %d) - %s\n",
                          id, g.bus, g.isDFIG ? "DFIG" : "Standard");
 
         buf.appendFormat("\tPg_%d = %.6f; Vs_%d = %.6f; mBase_%d = %.1f\n",
@@ -489,6 +489,10 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
                              id, d.Popt, id, d.OmegaB);
             // Bus voltage magnitude at generator bus (constant parameter)
             buf.appendFormat("\tv_h_%d = %.6f\n", id, g.Vs);
+
+            // Declare algebraic outputs for plotting
+            buf.appendFormat("\tP_h_%d = 0 [out=true]\n", id);
+            buf.appendFormat("\tQ_h_%d = 0 [out=true]\n", id);
         }
         else
         {
@@ -499,6 +503,9 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
                              id, s.OmegaB, id, s.E_prime);
             buf.appendFormat("\tP_m_%d = %.6f\n", id, g.Pg / ps.baseMVA);
             buf.appendFormat("\tVm_%d = %.6f\n", id, g.Vs);
+
+            // Declare algebraic output for plotting
+            buf.appendFormat("\tP_e_%d = 0 [out=true]\n", id);
         }
         buf.append("\n");
     }
@@ -531,7 +538,7 @@ void ModelConverter::writeStdGenEquations(arch::MemoryOut& out,
         return;
 
     buf.reserve(4096);
-    buf.append("\t// ── Standard synchronous generator equations ──\n");
+    buf.append("\t// -- Standard synchronous generator equations --\n");
 
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
@@ -596,7 +603,7 @@ void ModelConverter::writeDFIGEquations(arch::MemoryOut& out,
         return;
 
     buf.reserve(8192);
-    buf.append("\t// ── DFIG generator equations (Milano model) ──\n");
+    buf.append("\t// -- DFIG generator equations (Milano model) --\n");
 
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
@@ -893,55 +900,52 @@ bool ModelConverter::convert(const td::String&      inputXMLPath,
     onProgress(0.22, statusBuf.c_str());
     statusBuf.reset();
 
-    // ── Stage 3: Write Header ───────────────────────────────────────
+    // ── Stages 3 to 8: Write to both memDigitalOut (host) and localDigitalOut (file) ──
+    arch::MemoryOut localDigitalOut;
+
+    // Stage 3: Header
     onProgress(0.25, "Writing model header...");
     td::MutableString buf;
     writeHeader(memDigitalOut, options, buf);
+    writeHeader(localDigitalOut, options, buf);
 
-    // ── Stage 4: Write Variables ────────────────────────────────────
+    // Stage 4: Variables
     onProgress(0.35, "Writing variable declarations...");
     writeVariables(memDigitalOut, ps, buf);
+    writeVariables(localDigitalOut, ps, buf);
 
-    // ── Stage 5: Write Parameters ───────────────────────────────────
+    // Stage 5: Parameters
     onProgress(0.45, "Writing parameter values...");
     writeParameters(memDigitalOut, ps, buf);
+    writeParameters(localDigitalOut, ps, buf);
 
-    // ── Stage 6 & 7: Write Equations ────────────────────────────────
+    // Stage 6 & 7: Equations
     memDigitalOut.put("ODEs:\n");
+    localDigitalOut.put("ODEs:\n");
 
     onProgress(0.55, "Writing standard generator equations...");
     writeStdGenEquations(memDigitalOut, ps, buf);
+    writeStdGenEquations(localDigitalOut, ps, buf);
 
     onProgress(0.65, "Writing DFIG generator equations...");
     writeDFIGEquations(memDigitalOut, ps, buf);
+    writeDFIGEquations(localDigitalOut, ps, buf);
 
-    // ── Stage 8: PostProc ───────────────────────────────────────────
+    // Stage 8: PostProc
     onProgress(0.75, "Writing post-processing section...");
     writePostProc(memDigitalOut, ps, buf);
+    writePostProc(localDigitalOut, ps, buf);
 
-    // ── Write .dmodl to disk ────────────────────────────────────────
+    // ── Write .dmodl to disk (using clean localDigitalOut) ─────────
     onProgress(0.80, "Saving digital model file...");
     {
-        // Reset the archive so previous conversion data is not prepended
-        memDigitalOut.reset();
-
-        // Re-write all sections into the now-empty archive
-        td::MutableString buf2;
-        writeHeader(memDigitalOut, options, buf2);
-        writeVariables(memDigitalOut, ps, buf2);
-        writeParameters(memDigitalOut, ps, buf2);
-        memDigitalOut.put("ODEs:\n");
-        writeStdGenEquations(memDigitalOut, ps, buf2);
-        writeDFIGEquations(memDigitalOut, ps, buf2);
-        writePostProc(memDigitalOut, ps, buf2);
-
         std::ofstream fDigital;
         if (!fo::createTextFile(fDigital, outDmodlPath))
         {
             onProgress(0.80, "ERROR: Cannot create output .dmodl file!");
             return false;
         }
-        memDigitalOut.writeToFile(fDigital);
+        localDigitalOut.writeToFile(fDigital);
         fDigital.close();
     }
 
@@ -949,7 +953,9 @@ bool ModelConverter::convert(const td::String&      inputXMLPath,
     if (memVisualOut)
     {
         onProgress(0.85, "Generating visual model...");
+        arch::MemoryOut localVisualOut;
         writeVisualModel(*memVisualOut, ps);
+        writeVisualModel(localVisualOut, ps);
 
         td::String vmodlPath = fo::replaceFileExtension<false>(outDmodlPath, ".vmodl");
         std::ofstream fVisual;
@@ -960,7 +966,7 @@ bool ModelConverter::convert(const td::String&      inputXMLPath,
         }
         else
         {
-            memVisualOut->writeToFile(fVisual);
+            localVisualOut.writeToFile(fVisual);
             fVisual.close();
         }
     }
