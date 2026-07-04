@@ -119,12 +119,11 @@ void ModelConverter::buildMatrices(PowerSystem& ps,
     for (td::UINT4 i = 0; i < ps.buses.size(); ++i)
         busNumToIdx[ps.buses[i].number] = (td::INT4)i;
 
-    // ── Sparse Y-bus construction ────────────────────────────────────
     // Estimate non-zeros: diagonal (N) + 2 per branch (off-diag)
     int nNZ = nBus + 2 * nBranch;
     ps.pYbus = sparse::createCmplxMatrix(nBus, nBus, nNZ,
                                           sparse::Symmetry::NonSymmetric);
-    ps.ybusReleaser = sparse::CmplxMatrixReleaser(ps.pYbus);
+    ps.ybusReleaser = ps.pYbus;
 
     // Add branch admittances
     for (td::UINT4 k = 0; k < ps.branches.size(); ++k)
@@ -151,18 +150,18 @@ void ModelConverter::buildMatrices(PowerSystem& ps,
         // Y-bus elements (pi-model with tap)
         // Y[i][i] += yij / tap^2 + yshunt
         std::complex<double> yii_add = yij / (tapRatio * tapRatio) + yshunt;
-        ps.pYbus->addTriple(i, i, yii_add);
+        ps.pYbus->addTriple1(i + 1, i + 1, yii_add);
 
         // Y[j][j] += yij + yshunt
         std::complex<double> yjj_add = yij + yshunt;
-        ps.pYbus->addTriple(j, j, yjj_add);
+        ps.pYbus->addTriple1(j + 1, j + 1, yjj_add);
 
         // Y[i][j] -= yij / tap
         std::complex<double> yij_off = -yij / tapRatio;
-        ps.pYbus->addTriple(i, j, yij_off);
+        ps.pYbus->addTriple1(i + 1, j + 1, yij_off);
 
         // Y[j][i] -= yij / tap
-        ps.pYbus->addTriple(j, i, yij_off);
+        ps.pYbus->addTriple1(j + 1, i + 1, yij_off);
     }
 
     // Add bus shunt admittances (Gs + jBs) to diagonal
@@ -173,7 +172,7 @@ void ModelConverter::buildMatrices(PowerSystem& ps,
         {
             std::complex<double> yshuntBus(bus.Gs / ps.baseMVA,
                                            bus.Bs / ps.baseMVA);
-            ps.pYbus->addTriple((td::INT4)i, (td::INT4)i, yshuntBus);
+            ps.pYbus->addTriple1((td::INT4)i + 1, (td::INT4)i + 1, yshuntBus);
         }
     }
 
