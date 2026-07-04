@@ -405,12 +405,10 @@ void ModelConverter::writeHeader(arch::MemoryOut& out,
 }
 
 // ═════════════════════════════════════════════════════════════════════
-//  Stage 4: Write variable declarations
+//  Stage 4: Write variable declarations with initial values inline
 //
-//  For each standard gen g:  delta_g, omega_g
-//  For each DFIG gen g:      omega_m_g, i_rq_g, i_rd_g
-//  Plus algebraic:           tau_e_g (DFIG), P_e_g (StdGen)
-//  Plus network:             v_h_g (bus voltage at gen bus)
+//  dTwin format: each variable listed as  varName=initValue
+//  State vars go in Vars block; true constants go in Params.
 // ═════════════════════════════════════════════════════════════════════
 void ModelConverter::writeVariables(arch::MemoryOut& out,
                                     const PowerSystem& ps,
@@ -420,11 +418,9 @@ void ModelConverter::writeVariables(arch::MemoryOut& out,
     buf.reserve(4096);
     buf.appendFormat("Model [type=DAE domain=real method=RK2 name=\"%s\"]:\n",
                      modelName.c_str());
-    buf.append("Vars [out=true]:\n\t");
-    out.put(buf.c_str(), buf.length());
-    buf.reset();
+    buf.append("Vars [out=true]:\n");
 
-    // State + algebraic variables for each generator
+    // Each variable listed with its initial value (dTwin format: name=initVal)
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
         const auto& g = ps.generators[i];
@@ -432,13 +428,25 @@ void ModelConverter::writeVariables(arch::MemoryOut& out,
 
         if (g.isDFIG)
         {
-            buf.appendFormat("omega_m_%d; i_rq_%d; i_rd_%d; tau_e_%d; ",
-                             id, id, id, id);
-            buf.appendFormat("P_h_%d; Q_h_%d; ", id, id);
+            const auto& d = g.dfig;
+            buf.appendFormat("\tomega_m_%d=%.6f\t// DFIG rotor speed [p.u.]\n",  id, d.omega_m0);
+            buf.appendFormat("\ti_rq_%d=%.6f\t// DFIG q-axis rotor current\n",   id, d.i_rq0);
+            buf.appendFormat("\ti_rd_%d=%.6f\t// DFIG d-axis rotor current\n",   id, d.i_rd0);
+            buf.appendFormat("\ttau_e_%d=0\t// DFIG electromagnetic torque\n",   id);
+            buf.appendFormat("\tP_h_%d=0\t// DFIG active power injection\n",     id);
+            buf.appendFormat("\tQ_h_%d=0\t// DFIG reactive power injection\n",   id);
         }
         else
         {
-            buf.appendFormat("delta_%d; omega_%d; P_e_%d; ", id, id, id);
+            const auto& s = g.std;
+            double vm  = g.Vs;
+            double sinD = (g.Pg / ps.baseMVA) * s.xd_prime / (s.E_prime * vm);
+            if (sinD >  1.0) sinD =  1.0;
+            if (sinD < -1.0) sinD = -1.0;
+            double d0 = std::asin(sinD);
+            buf.appendFormat("\tdelta_%d=%.6f\t// rotor angle [rad]\n",  id, d0);
+            buf.appendFormat("\tomega_%d=%.6f\t// rotor speed [p.u.]\n", id, s.omega0);
+            buf.appendFormat("\tP_e_%d=0\t// electrical power output\n",  id);
         }
     }
     buf.append("\n");
@@ -459,7 +467,7 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
     // ── Global ──────────────────────────────────────────────────────
     buf.appendFormat("\tbaseMVA = %.1f\n", ps.baseMVA);
 
-    // ── Per-generator parameters ────────────────────────────────────
+    // ── Per-generator parameters (constants only — no state var init values) ─
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
         const auto& g = ps.generators[i];
@@ -482,13 +490,8 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
                              id, d.KV, id, d.vref);
             buf.appendFormat("\tP_opt_%d = %.6f; Omega_b_%d = %.6f\n",
                              id, d.Popt, id, d.OmegaB);
-            // Initial conditions
-            buf.appendFormat("\tomega_m_%d = %.6f\t[init=true]\n", id, d.omega_m0);
-            buf.appendFormat("\ti_rq_%d = %.6f\t[init=true]\n",   id, d.i_rq0);
-            buf.appendFormat("\ti_rd_%d = %.6f\t[init=true]\n",   id, d.i_rd0);
-            // Bus voltage magnitude at generator bus (from flat start)
-            double vh = g.Vs;
-            buf.appendFormat("\tv_h_%d = %.6f\n", id, vh);
+            // Bus voltage magnitude at generator bus (constant parameter)
+            buf.appendFormat("\tv_h_%d = %.6f\n", id, g.Vs);
         }
         else
         {
@@ -497,18 +500,8 @@ void ModelConverter::writeParameters(arch::MemoryOut& out,
                              id, s.xd_prime, id, s.H, id, s.D);
             buf.appendFormat("\tOmega_b_%d = %.6f; E_prime_%d = %.6f\n",
                              id, s.OmegaB, id, s.E_prime);
-            // P_m equals initial P in p.u.
             buf.appendFormat("\tP_m_%d = %.6f\n", id, g.Pg / ps.baseMVA);
-            // Bus voltage at generator bus
-            double vm = g.Vs;
-            buf.appendFormat("\tVm_%d = %.6f\n", id, vm);
-            // Initial angle from power flow: delta0 ≈ asin(P_e * xd' / (E' * V))
-            double sinD = (g.Pg / ps.baseMVA) * s.xd_prime / (s.E_prime * vm);
-            if (sinD > 1.0) sinD = 1.0;
-            if (sinD < -1.0) sinD = -1.0;
-            double d0 = std::asin(sinD);
-            buf.appendFormat("\tdelta_%d = %.6f\t[init=true]\n", id, d0);
-            buf.appendFormat("\tomega_%d = %.6f\t[init=true]\n", id, s.omega0);
+            buf.appendFormat("\tVm_%d = %.6f\n", id, g.Vs);
         }
         buf.append("\n");
     }
