@@ -419,9 +419,9 @@ void ModelConverter::writeVariables(arch::MemoryOut& out,
                      modelName.c_str());
     buf.append("Vars [out=true]:\n");
 
-    // dTwin DAE pattern (same as PendulumDAE.dmodl):
-    //   state vars  -> varName=initialValue
-    //   algebraic vars -> varName=definingExpression  (solver recomputes each step)
+    // ONLY state variables go here (one ODE each).
+    // Algebraic quantities (P_e, tau_e, P_h, Q_h) are INLINED into ODEs
+    // and computed in PostProc for output — not listed as Vars.
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
         const auto& g = ps.generators[i];
@@ -430,23 +430,9 @@ void ModelConverter::writeVariables(arch::MemoryOut& out,
         if (g.isDFIG)
         {
             const auto& d = g.dfig;
-            // ── State variables (initial numeric value) ──
             buf.appendFormat("\tomega_m_%d=%.6f\t// DFIG rotor speed [p.u.]\n",  id, d.omega_m0);
             buf.appendFormat("\ti_rq_%d=%.6f\t// DFIG q-axis rotor current\n",   id, d.i_rq0);
             buf.appendFormat("\ti_rd_%d=%.6f\t// DFIG d-axis rotor current\n",   id, d.i_rd0);
-            // ── Algebraic variables (defining expression, evaluated each step) ──
-            buf.appendFormat(
-                "\ttau_e_%d=-(xmu_%d*v_h_%d*i_rq_%d)/(Omega_b_%d*(xs_%d+xmu_%d))"
-                "\t// DFIG electromagnetic torque\n",
-                id, id, id, id, id, id, id);
-            buf.appendFormat(
-                "\tP_h_%d=-(xmu_%d*v_h_%d*i_rq_%d)/(xs_%d+xmu_%d)"
-                "\t// DFIG active power injection\n",
-                id, id, id, id, id, id);
-            buf.appendFormat(
-                "\tQ_h_%d=-((xmu_%d*v_h_%d*i_rd_%d)/(xs_%d+xmu_%d))-(v_h_%d*v_h_%d/xmu_%d)"
-                "\t// DFIG reactive power injection\n",
-                id, id, id, id, id, id, id, id, id);
         }
         else
         {
@@ -456,14 +442,8 @@ void ModelConverter::writeVariables(arch::MemoryOut& out,
             if (sinD >  1.0) sinD =  1.0;
             if (sinD < -1.0) sinD = -1.0;
             double d0 = std::asin(sinD);
-            // ── State variables ──
             buf.appendFormat("\tdelta_%d=%.6f\t// rotor angle [rad]\n",  id, d0);
             buf.appendFormat("\tomega_%d=%.6f\t// rotor speed [p.u.]\n", id, s.omega0);
-            // ── Algebraic variable (defining expression) ──
-            buf.appendFormat(
-                "\tP_e_%d=(E_prime_%d*Vm_%d/xd_prime_%d)*sin(delta_%d)"
-                "\t// electrical power [p.u.]\n",
-                id, id, id, id, id);
         }
     }
     buf.append("\n");
@@ -560,19 +540,19 @@ void ModelConverter::writeStdGenEquations(arch::MemoryOut& out,
             continue;
 
         int id = g.number;
+        const auto& s = g.std;
 
-        // NOTE: P_e_N is an algebraic var defined by expression in Vars block
-        // — do NOT redefine it here, just use it in the ODEs below.
-
+        // Algebraic power expression inlined directly — P_e is NOT a Var
         // ODE: rotor angle
         buf.appendFormat(
             "\tdelta_%d' = Omega_b_%d * (omega_%d - 1)\n",
             id, id, id);
 
-        // ODE: rotor speed
+        // ODE: rotor speed (P_e expression inlined)
         buf.appendFormat(
-            "\tomega_%d' = (P_m_%d - P_e_%d - D_%d * (omega_%d - 1)) / (2 * H_%d)\n",
-            id, id, id, id, id, id);
+            "\tomega_%d' = (P_m_%d - (E_prime_%d*Vm_%d/xd_prime_%d)*sin(delta_%d)"
+            " - D_%d*(omega_%d-1)) / (2*H_%d)\n",
+            id, id, id, id, id, id, id, id, id);
 
         buf.append("\n");
     }
@@ -628,26 +608,23 @@ void ModelConverter::writeDFIGEquations(arch::MemoryOut& out,
 
         buf.appendFormat("\t// DFIG Generator %d at bus %d\n", id, g.bus);
 
-        // NOTE: tau_e, P_h, Q_h are algebraic vars defined in Vars block
-        // — only the ODEs (state var derivatives) belong here.
-
-        // ── ODE 1: rotor speed ──────────────────────────────────────
+        // tau_e expression inlined (not a separate Var)
+        // ODE 1: rotor speed
         buf.appendFormat(
-            "\tomega_m_%d' = (P_opt_%d / omega_m_%d - tau_e_%d) / "
-            "(2 * H_total_%d)\n",
-            id, id, id, id, id);
+            "\tomega_m_%d' = (P_opt_%d/omega_m_%d "
+            "- (-(xmu_%d*v_h_%d*i_rq_%d)/(Omega_b_%d*(xs_%d+xmu_%d)))) "
+            "/ (2*H_total_%d)\n",
+            id, id, id, id, id, id, id, id, id, id);
 
-        // ── ODE 2: active rotor current (i_rq) ─────────────────────
+        // ODE 2: active rotor current
         buf.appendFormat(
-            "\ti_rq_%d' = (1 / T_eps_%d) * "
-            "(-((xs_%d + xmu_%d) / (xmu_%d * v_h_%d)) * "
-            "(P_opt_%d / omega_m_%d) - i_rq_%d)\n",
+            "\ti_rq_%d' = (1/T_eps_%d) * "
+            "(-((xs_%d+xmu_%d)/(xmu_%d*v_h_%d))*(P_opt_%d/omega_m_%d) - i_rq_%d)\n",
             id, id, id, id, id, id, id, id, id);
 
-        // ── ODE 3: reactive rotor current (i_rd) ────────────────────
+        // ODE 3: reactive rotor current
         buf.appendFormat(
-            "\ti_rd_%d' = K_V_%d * (v_h_%d - v_ref_%d) - "
-            "(v_h_%d / xmu_%d) - i_rd_%d\n",
+            "\ti_rd_%d' = K_V_%d*(v_h_%d-v_ref_%d) - (v_h_%d/xmu_%d) - i_rd_%d\n",
             id, id, id, id, id, id, id);
 
         buf.append("\n");
@@ -666,9 +643,8 @@ void ModelConverter::writePostProc(arch::MemoryOut& out,
 {
     buf.reserve(2048);
     buf.append("PostProc:\n");
-    buf.append("\t// Post-processing calculations\n");
 
-    // For DFIG gens: output active/reactive power in MW/MVAr
+    // Compute algebraic outputs for plotting (inlined from Milano model)
     for (td::UINT4 i = 0; i < ps.generators.size(); ++i)
     {
         const auto& g = ps.generators[i];
@@ -676,13 +652,21 @@ void ModelConverter::writePostProc(arch::MemoryOut& out,
 
         if (g.isDFIG)
         {
+            // Active power injection: P_h = -(xmu*v_h*i_rq)/(xs+xmu)
             buf.appendFormat(
-                "\t// DFIG Gen %d: P_h, Q_h are in p.u. on machine base\n", id);
+                "\tP_h_%d = -(xmu_%d*v_h_%d*i_rq_%d)/(xs_%d+xmu_%d)\n",
+                id, id, id, id, id, id);
+            // Reactive power injection: Q_h = -((xmu*v_h*i_rd)/(xs+xmu)) - v_h^2/xmu
+            buf.appendFormat(
+                "\tQ_h_%d = -((xmu_%d*v_h_%d*i_rd_%d)/(xs_%d+xmu_%d)) - (v_h_%d*v_h_%d/xmu_%d)\n",
+                id, id, id, id, id, id, id, id, id);
         }
         else
         {
+            // Electrical power output: P_e = (E'*Vm/xd')*sin(delta)
             buf.appendFormat(
-                "\t// Std Gen %d: P_e is in p.u. on system base\n", id);
+                "\tP_e_%d = (E_prime_%d*Vm_%d/xd_prime_%d)*sin(delta_%d)\n",
+                id, id, id, id, id);
         }
     }
 
@@ -938,6 +922,19 @@ bool ModelConverter::convert(const td::String&      inputXMLPath,
     // ── Write .dmodl to disk ────────────────────────────────────────
     onProgress(0.80, "Saving digital model file...");
     {
+        // Reset the archive so previous conversion data is not prepended
+        memDigitalOut.reset();
+
+        // Re-write all sections into the now-empty archive
+        td::MutableString buf2;
+        writeHeader(memDigitalOut, options, buf2);
+        writeVariables(memDigitalOut, ps, buf2);
+        writeParameters(memDigitalOut, ps, buf2);
+        memDigitalOut.put("ODEs:\n");
+        writeStdGenEquations(memDigitalOut, ps, buf2);
+        writeDFIGEquations(memDigitalOut, ps, buf2);
+        writePostProc(memDigitalOut, ps, buf2);
+
         std::ofstream fDigital;
         if (!fo::createTextFile(fDigital, outDmodlPath))
         {
