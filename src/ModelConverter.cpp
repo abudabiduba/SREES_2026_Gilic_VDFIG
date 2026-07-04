@@ -390,7 +390,7 @@ void ModelConverter::writeHeader(arch::MemoryOut& out,
     buf.appendFormat(
         "Header:\n"
         "\tmaxIter = %d\n"
-        "\treport = Solver\n"
+        "\treport = Solved\n"
         "\tmaxReps = -1\n"
         "\toutToTxt = false\n"
         "\ttxtFile = \"\"\n"
