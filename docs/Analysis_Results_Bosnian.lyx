@@ -5,6 +5,9 @@
 \textclass article
 \use_default_options true
 \language english
+\begin_preamble
+\usepackage[margin=1.0in]{geometry}
+\end_preamble
 \end_header
 \begin_body
 \begin_layout Title
@@ -44,8 +47,8 @@ Aktivna snaga (
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Active Power.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -55,8 +58,8 @@ Aktivna snaga (
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Reactive Power.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -87,8 +90,8 @@ Grafikoni brzine rotora (
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Rotor Speed.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -98,8 +101,8 @@ Grafikoni brzine rotora (
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Rotor Currents.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -127,8 +130,8 @@ Uvođenje DFIG-a utiče na preostala dva sinhrona generatora u mreži. Ponašanj
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Std Gen Rotor Angle.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -138,8 +141,8 @@ Uvođenje DFIG-a utiče na preostala dva sinhrona generatora u mreži. Ponašanj
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/9 DFIG Std Gen Rotor Speed.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -165,8 +168,8 @@ Snage i brzine DFIG-a u velikoj mreži
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/118 DFIG Active Power.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -176,8 +179,8 @@ Snage i brzine DFIG-a u velikoj mreži
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/118 DFIG Reactive Power.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -187,8 +190,8 @@ Snage i brzine DFIG-a u velikoj mreži
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/118 DFIG Rotor Speed.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -210,8 +213,8 @@ Odziv uglova rotora i brzina za 53 sinhrona generatora prikazan je na sljedećim
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/118 DFIG Std Gen Rotor Angle.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 
@@ -221,8 +224,8 @@ Odziv uglova rotora i brzina za 53 sinhrona generatora prikazan je na sljedećim
 \begin_layout Standard
 \begin_inset Graphics
 	filename /home/abu/SREES/presentation/118 DFIG Std Gen Rotor Speed.png
-	lyxscale 40
-	width 80col%
+	lyxscale 20
+	width 100col%
 
 \end_inset
 

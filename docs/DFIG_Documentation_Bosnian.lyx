@@ -90,6 +90,9 @@
 \docbook_table_output 0
 \docbook_mathml_prefix 1
 \docbook_mathml_version 0
+\begin_preamble
+\usepackage[margin=1.0in]{geometry}
+\end_preamble
 \end_header
 
 \begin_body
