@@ -1,0 +1,439 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_original_properties false
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language bosnian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_style default
+\quote_delimiter old
+\quote_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Dinamičko modeliranje elektroenergetskog sistema sa dvostrano napajanim asinhronim generatorom (DFIG) i plugin pretvarač
+\end_layout
+
+\begin_layout Author
+Projektna grupa SREES
+\end_layout
+
+\begin_layout Abstract
+Ovaj dokument pruža sveobuhvatan pregled dinamičkog modela vjetroturbine sa dvostrano napajanim asinhronim generatorom (DFIG), njegove implementacije pomoću DAE reprezentacije u dq-koordinatnom sistemu Federica Milana, te arhitekture natID plugin pretvarača razvijenog za dTwin simulacijsku platformu. Opisani su fizički principi, matematičke formulacije, struktura softvera i korak-po-korak uputstva za testiranje i pokretanje modela na Linux i Windows okruženjima.
+\end_layout
+
+\begin_layout Section
+Uvod u DFIG vjetroturbine
+\end_layout
+
+\begin_layout Standard
+Dvostrano napajani asinhroni generatori (DFIG) imaju široku primjenu u modernim sistemima za konverziju energije vjetra zbog svoje sposobnosti rada u širokom opsegu promjenjivih brzina vjetra uz održavanje visoke efikasnosti. Za razliku od tradicionalnih sinhronih ili asinhronih generatora sa konstantnom brzinom, vjetroturbina sa DFIG-om koristi asinhronu mašinu sa namotanim rotorom gdje su:
+\end_layout
+
+\begin_layout Itemize
+Statorski namotaji direktno povezani na trofaznu naizmjeničnu elektroenergetsku mrežu.
+\end_layout
+
+\begin_layout Itemize
+Rotorski namotaji povezani na mrežu preko back-to-back AC/DC/AC pretvarača (koji se sastoji od pretvarača na strani rotora, RSC, i pretvarača na strani mreže, GSC).
+\end_layout
+
+\begin_layout Standard
+Kontrolom rotorskih struja pomoću tehnika vektorske kontrole, učestanost, amplituda i faza rotorskog napona se mogu podešavati. Ovo omogućava razdvojenu (dekuplovanu) kontrolu aktivne i reaktivne snage koje se ubrizgavaju u mrežu. Pretvarač treba da podnese samo snagu klizanja (tipično 25-30% ukupne nominalne snage), što značajno smanjuje cijenu pretvarača u poređenju sa vjetroturbinama sa pretvaračima punog kapaciteta.
+\end_layout
+
+\begin_layout Section
+Dinamički DAE model DFIG-a
+\end_layout
+
+\begin_layout Standard
+Dinamički model vjetroturbine sa DFIG-om predstavljen je sistemom diferencijalno-algebarskih jednačina (DAE) u dq-koordinatnom sistemu, prateći standardnu formulaciju Federica Milana 
+\begin_inset Citation
+key "Milano2010"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Jednačine stanja (ODE)
+\end_layout
+
+\begin_layout Standard
+DFIG ima tri varijable stanja: brzinu rotora 
+\begin_inset Formula $\omega_{m}$
+\end_inset
+
+, rotorsku struju po q-osi 
+\begin_inset Formula $i_{rq}$
+\end_inset
+
+, i rotorsku struju po d-osi 
+\begin_inset Formula $i_{rd}$
+\end_inset
+
+. Njihova dinamika je opisana sljedećim jednačinama:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\omega_{m}}{dt} = \frac{\tau_{t} - \tau_{e}}{2H_{total}}
+\]
+\end_inset
+
+
+
+gdje je 
+\begin_inset Formula $H_{total}$
+\end_inset
+
+ ukupna konstanta inercije, 
+\begin_inset Formula $\tau_{t} = P_{opt}/\omega_{m}$
+\end_inset
+
+ mehanički moment turbine dobijen praćenjem optimalne snage, a 
+\begin_inset Formula $\tau_{e}$
+\end_inset
+
+ elektromagnetni moment.
+
+\end_layout
+
+\begin_layout Standard
+Dinamika rotorskih struja je modelirana jednačinama prvog reda sa kašnjenjem, koje predstavljaju kontroler pretvarača na strani rotora:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{rq}}{dt} = \frac{1}{T_{\epsilon}} \left( -\frac{x_{s} + x_{\mu}}{x_{\mu} v_{h}} \left( \frac{P_{opt}}{\omega_{m}} \right) - i_{rq} \right)
+\]
+\end_inset
+
+
+
+gdje je 
+\begin_inset Formula $T_{\epsilon}$
+\end_inset
+
+ vremenska konstanta kontrolera, 
+\begin_inset Formula $x_{s}$
+\end_inset
+
+ reaktansa statora, 
+\begin_inset Formula $x_{\mu}$
+\end_inset
+
+ međureaktansa, a 
+\begin_inset Formula $v_{h}$
+\end_inset
+
+ napon na sabirnici generatora.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{rd}}{dt} = K_{V}(v_{h} - v_{ref}) - \frac{v_{h}}{x_{\mu}} - i_{rd}
+\]
+\end_inset
+
+
+
+gdje je 
+\begin_inset Formula $K_{V}$
+\end_inset
+
+ pojačanje regulatora napona, a 
+\begin_inset Formula $v_{ref}$
+\end_inset
+
+ referentni napon.
+
+\end_layout
+
+\begin_layout Subsection
+Algebarske varijable i ubrizgavanje snage
+\end_layout
+
+\begin_layout Standard
+Elektromagnetni moment 
+\begin_inset Formula $\tau_{e}$
+\end_inset
+
+ definisan je algebarski kao:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{e} = -\frac{x_{\mu} v_{h} i_{rq}}{\Omega_{b} (x_{s} + x_{\mu})}
+\]
+\end_inset
+
+
+
+gdje je 
+\begin_inset Formula $\Omega_{b}$
+\end_inset
+
+ bazna učestanost. Aktivna i reaktivna snaga koje DFIG ubrizgava u mrežu na sabirnici generatora su:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P_{h} = -\frac{x_{\mu} v_{h} i_{rq}}{x_{s} + x_{\mu}}
+\]
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Q_{h} = -\frac{x_{\mu} v_{h} i_{rd}}{x_{s} + x_{\mu}} - \frac{v_{h}^2}{x_{\mu}}
+\]
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Section
+Arhitektura programa i faze konverzije
+\end_layout
+
+\begin_layout Standard
+Plugin pretvarač parsuje XML konfiguracioni fajl elektroenergetskog sistema IEEE (kao što su 9-sabirnički, 30-sabirnički, 118-sabirnički ili 300-sabirnički sistemi) i generiše digitalni model 
+\begin_inset Quotes eld
+\end_inset
+
+.dmodl
+\begin_inset Quotes erd
+\end_inset
+
+ i vizuelni model 
+\begin_inset Quotes eld
+\end_inset
+
+.vmodl
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Faze rada klase ModelConverter
+\end_layout
+
+\begin_layout Standard
+Klasa 
+\family typewriter
+ModelConverter
+\family default
+ izvršava sljedeće faze u procesu konverzije:
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 1: Parsiranje XML-a
+\series default
+ – Učitavanje XML ulaza za sabirnice, grane, generatore, DFIG podrazumijevane parametre i standardne parametre generatora.
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 2: Dodjela DFIG-a
+\series default
+ – Označavanje izabranih generatora kao DFIG na osnovu liste koju je konfigurisao korisnik (npr. generator 2) i primjena odgovarajućih parametara.
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 3: Izgradnja matrica
+\series default
+ – Formiranje natID nativnih struktura, uključujući rijetku kompleksnu matricu admitansi (Y-bus) i guste matrice napona i parametara generatora.
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 4: Zapisivanje zaglavlja DMODL-a
+\series default
+ – Upisivanje konfiguracije simulacije (startTime, dTime, endTime, maxIter, report).
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 5: Sekcija varijabli
+\series default
+ – Deklarisanje varijabli stanja sa njihovim početnim numeričkim vrijednostima.
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 6: Sekcija parametara
+\series default
+ – Upisivanje konstanti, mašinskih parametara i registrovanje algebarskih izlaza (P_e, P_h, Q_h) sa oznakom 
+\begin_inset Formula $[out=true]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\series bold
+Faza 7: Jednačine i postprocesiranje
+\series default
+ – Upisivanje diferencijalnih jednačina u sekciju 
+\family typewriter
+ODEs:
+\family default
+ i proračun algebarskih izlaza u sekciju 
+\family typewriter
+PostProc:
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Testiranje i kompajliranje
+\end_layout
+
+\begin_layout Subsection
+Linux okruženje
+\end_layout
+
+\begin_layout Standard
+Da biste kompajlirali plugin na Linuxu, idite u build direktorijum i pokrenite:
+\end_layout
+
+\begin_layout Standard
+\family typewriter
+cmake --build . --config Release
+\family default
+
+\end_layout
+
+\begin_layout Standard
+Da biste pokrenuli automatizovane testove i izvršili konverziju za 9, 30, 118 i 300-sabirničke sisteme:
+\end_layout
+
+\begin_layout Standard
+\family typewriter
+./Release/test_runner /home/abu/SREES/src
+\family default
+
+\end_layout
+
+\begin_layout Subsection
+Windows okruženje
+\end_layout
+
+\begin_layout Standard
+Da biste izgradili projekat na Windowsu, otvorite Developer Command Prompt za VS:
+\end_layout
+
+\begin_layout Standard
+\family typewriter
+mkdir build && cd build && cmake .. && cmake --build . --config Release
+\family default
+
+\end_layout
+
+\begin_layout Standard
+Kopirajte kompajlirani 
+\series bold
+dfigPlugin.dll
+\series default
+ u dTwin direktorijum za plugine. Otvorite dTwin, idite na **Import -> Vjetroelektrana DFIG Converter**, odaberite XML fajl i pokrenite proračun!
+\end_layout
+
+\begin_layout Section*
+Literatura
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring Literatura
+\begin_inset LatexCommand bibitem
+key "Milano2010"
+literal "false"
+
+\end_inset
+
+F. Milano, 
+\series italic
+Power System Modelling and Scripting
+\series default
+, Springer Science & Business Media, 2010.
+\end_layout
+
+\end_document
