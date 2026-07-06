@@ -2,8 +2,7 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_original_properties true
-\layoutstyle default
+\save_original_properties false
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -31,7 +30,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \use_minted 0
 \index Index
 \shortcut idx
@@ -42,8 +41,8 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
-\math_numbering_style 0
-\quote_delimiter English
+\math_numbering_style default
+\quote_delimiter old
 \quote_style english
 \dynamic_quotes 0
 \papercolumns 1
@@ -67,7 +66,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \end_header
 
 \begin_body
@@ -291,63 +290,48 @@ ModelConverter Stages
 
 \begin_layout Standard
 The class 
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 ModelConverter
-\end_layout
-\end_inset
-
+\family default
  performs the following pipeline stages:
 \end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 1: XML Parsing
 \series default
  – Reads the XML input for buses, branches, generators, DFIG defaults, and standard generator parameters.
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 2: DFIG Assignment
 \series default
  – Flags selected generators as DFIG based on the user-configured list (e.g., generator 2) and applies parameter overrides.
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 3: Matrix Construction
 \series default
  – Builds natID native structures, including the sparse complex admittance matrix (Y-bus) and dense voltage/generator matrices.
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 4: Write DMODL Header
 \series default
  – Emits the simulation configurations (startTime, dTime, endTime, maxIter, report).
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 5: Variables Section
 \series default
  – Declares state variables along with their initial numeric values.
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 6: Parameter Section
 \series default
@@ -357,31 +341,20 @@ Stage 6: Parameter Section
 
 .
 \end_layout
-\end_layout
 
 \begin_layout Enumerate
-\begin_layout Standard
 \series bold
 Stage 7: Equations & Post-Processing
 \series default
  – Emits state equations in 
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 ODEs:
-\end_layout
-\end_inset
-
+\family default
  and algebraic output calculations in 
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 PostProc:
-\end_layout
-\end_inset
-
+\family default
 .
-\end_layout
 \end_layout
 
 \begin_layout Section
@@ -397,14 +370,9 @@ To compile the plugin on Linux, navigate to your build folder and run:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 cmake --build . --config Release
-\end_layout
-\end_inset
-
-
+\family default
 
 \end_layout
 
@@ -413,14 +381,9 @@ To run the automated test suite and convert the IEEE 9, 30, 118, and 300-bus sys
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 ./Release/test_runner /home/abu/SREES/src
-\end_layout
-\end_inset
-
-
+\family default
 
 \end_layout
 
@@ -433,19 +396,18 @@ To build on Windows, open Developer Command Prompt for VS:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Code
-status open
-\begin_layout Plain Layout
+\family typewriter
 mkdir build && cd build && cmake .. && cmake --build . --config Release
-\end_layout
-\end_inset
-
-
+\family default
 
 \end_layout
 
 \begin_layout Standard
-Copy the compiled **dfigPlugin.dll** into your dTwin plugins directory. Open dTwin, go to **Import -> Vjetroelektrana DFIG Converter**, convert your XML file, and solve it!
+Copy the compiled 
+\series bold
+dfigPlugin.dll
+\series default
+ into your dTwin plugins directory. Open dTwin, go to **Import -> Vjetroelektrana DFIG Converter**, convert your XML file, and solve it!
 \end_layout
 
 \end_body
