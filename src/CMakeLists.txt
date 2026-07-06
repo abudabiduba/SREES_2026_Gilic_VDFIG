@@ -15,6 +15,9 @@ set(NATID_SDK_ROOT ${HOME_ROOT}/natID.SDK)
 include(${NATID_SDK_ROOT}/DevEnv/Common.cmake) 
 #END common part for all natID solutions
 
+# Fallback path for missing SDK headers (like arch/MemoryOut.h)
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+
 include(${NATID_SDK_ROOT}/DevEnv/natGUI.cmake)
 include(${NATID_SDK_ROOT}/DevEnv/MatrixLib.cmake)
 
