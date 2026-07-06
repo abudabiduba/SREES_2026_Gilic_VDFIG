@@ -108,7 +108,12 @@ Dynamic DAE Model of a DFIG
 \end_layout
 
 \begin_layout Standard
-The dynamic model of the DFIG wind turbine is represented as a system of Differential-Algebraic Equations (DAEs) in the dq-frame, following Federico Milano's standard formulation.
+The dynamic model of the DFIG wind turbine is represented as a system of Differential-Algebraic Equations (DAEs) in the dq-frame, following Federico Milano's standard formulation \begin_inset Citation
+key "Milano2010"
+literal "false"
+
+\end_inset
+.
 \end_layout
 
 \begin_layout Subsection
@@ -408,6 +413,26 @@ Copy the compiled
 dfigPlugin.dll
 \series default
  into your dTwin plugins directory. Open dTwin, go to **Import -> Vjetroelektrana DFIG Converter**, convert your XML file, and solve it!
+\end_layout
+
+
+\begin_layout Section*
+References
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring References
+\begin_inset LatexCommand bibitem
+key "Milano2010"
+literal "false"
+
+\end_inset
+
+F. Milano, 
+\series italic
+Power System Modelling and Scripting
+\series default
+, Springer Science & Business Media, 2010.
 \end_layout
 
 \end_body
