@@ -1,1 +1,1 @@
-Presentation time: 5-8 minutes
+Presentation time: 5-6 minutes
