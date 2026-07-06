@@ -17,3 +17,4 @@ CMakeFiles/
 Makefile
 cmake_install.cmake
 !src/dfigPlugin.dll
+!src/libdfigPlugin.so
