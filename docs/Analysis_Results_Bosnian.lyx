@@ -1,0 +1,226 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\end_header
+\begin_body
+\begin_layout Title
+Analiza dinamičke simulacije: IEEE 9 i IEEE 118 testni sistemi sa DFIG vjetroturbinom
+\end_layout
+
+\begin_layout Author
+Projektna grupa SREES
+\end_layout
+
+\begin_layout Abstract
+Ovaj dokument prikazuje detaljnu analizu rezultata dinamičke simulacije elektroenergetskih sistema sa integrisanom vjetroturbinom sa dvostrano napajanim asinhronim generatorom (DFIG). Simulacije su izvršene na dva standardna IEEE testna sistema: IEEE 9-sabirničkom i IEEE 118-sabirničkom sistemu, koristeći natID plugin pretvarač i dTwin platformu za proračune.
+\end_layout
+
+\begin_layout Section
+IEEE 9-sabirnički sistem (Case 9)
+\end_layout
+
+\begin_layout Standard
+IEEE 9-sabirnički sistem predstavlja mali, dobro prigušeni testni sistem sa tri generatora. U našem modelu, Generator 2 (na sabirnici 2) je konfigurisan kao DFIG vjetroturbina, dok su Generator 1 (slack) i Generator 3 standardni sinhroni generatori.
+\end_layout
+
+\begin_layout Subsection
+Aktivna i reaktivna snaga DFIG-a
+\end_layout
+
+\begin_layout Standard
+Aktivna snaga (
+\begin_inset Formula $P_{h}$
+\end_inset
+) i reaktivna snaga (
+\begin_inset Formula $Q_{h}$
+\end_inset
+) koje DFIG ubrizgava u mrežu prikazane su na grafikonima ispod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Active Power.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Reactive Power.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aktivna snaga se brzo stabilizuje na vrijednosti od oko 1.63 p.u. (odgovara 163 MW na bazi 100 MVA), prateći krivu optimalnog iskorištenja snage vjetra. Reaktivna snaga se reguliše na stabilnu vrijednost od oko -0.12 p.u., čime DFIG održava napon na generatoru pružajući reaktivnu podršku mreži.
+\end_layout
+
+\begin_layout Subsection
+Dinamika rotora i struje DFIG-a
+\end_layout
+
+\begin_layout Standard
+Grafikoni brzine rotora (
+\begin_inset Formula $\omega_{m}$
+\end_inset
+) i struja rotora u dq-koordinatnom sistemu (
+\begin_inset Formula $i_{rq}$
+\end_inset
+, 
+\begin_inset Formula $i_{rd}$
+\end_inset
+) prikazuju rad internih regulatora:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Rotor Speed.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Rotor Currents.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Brzina rotora ubrzava sa početne vrijednosti od 1.0 p.u. i glatko se stabilizuje na 1.2 p.u., što je optimalna brzina za dati profil vjetra. Struje rotora prate svoje referentne vrijednosti koje zadaje pretvarač na strani rotora (RSC). Struja po q-osi (
+\begin_inset Formula $i_{rq}$
+\end_inset
+) se stabilizuje na oko -0.65 p.u., dok struja po d-osi (
+\begin_inset Formula $i_{rd}$
+\end_inset
+) završava na oko -0.4 p.u.
+\end_layout
+
+\begin_layout Subsection
+Uticaj na sinhrone generatore (Stabilnost sistema)
+\end_layout
+
+\begin_layout Standard
+Uvođenje DFIG-a utiče na preostala dva sinhrona generatora u mreži. Ponašanje njihovih uglova rotora i brzina prikazano je ispod:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Std Gen Rotor Angle.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/9 DFIG Std Gen Rotor Speed.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Uglovi rotora i brzine sinhronih generatora 1 i 3 pokazuju kratkotrajne oscilacije (transijente) na početku simulacije usljed uključenja DFIG-a, ali se one uspješno prigušuju za manje od 4 sekunde, potvrđujući stabilnost sistema.
+\end_layout
+
+\begin_layout Section
+IEEE 118-sabirnički sistem (Case 118)
+\end_layout
+
+\begin_layout Standard
+IEEE 118-sabirnički sistem je znatno veći i kompleksniji elektroenergetski sistem sa 54 generatora. Generator 2 je konfigurisan kao DFIG vjetroturbina, dok su preostala 53 generatora klasične sinhrone mašine. Ovaj test potvrđuje skalabilnost i stabilnost modela u velikim mrežama.
+\end_layout
+
+\begin_layout Subsection
+Snage i brzine DFIG-a u velikoj mreži
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/118 DFIG Active Power.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/118 DFIG Reactive Power.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/118 DFIG Rotor Speed.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+U velikom sistemu, DFIG se ponaša izuzetno stabilno. Aktivna snaga se ustaljuje na 1.63 p.u. za oko 2 sekunde, a brzina rotora ubrzava na optimalnih 1.2 p.u. Rad lokalnih regulatora vjetroturbine nije narušen prisustvom velikog broja drugih generatora u mreži.
+\end_layout
+
+\begin_layout Subsection
+Stabilnost sinhronih generatora u Case 118
+\end_layout
+
+\begin_layout Standard
+Odziv uglova rotora i brzina za 53 sinhrona generatora prikazan je na sljedećim grafikonima:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/118 DFIG Std Gen Rotor Angle.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/abu/SREES/presentation/118 DFIG Std Gen Rotor Speed.png
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Iako u mreži postoji 53 sinhrona generatora koji međusobno interaguju, uvođenje DFIG vjetroelektrane ne uzrokuje destabilizaciju sistema. Svi sinhroni generatori ostaju u sinhronizmu, a njihove brzine rotora se brzo prigušuju i stabilizuju, što dokazuje da DFIG plugin ne unosi negativno prigušenje (negativni damping) u elektroenergetsku mrežu.
+\end_layout
+
+\end_body
+\end_document
