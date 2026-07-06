@@ -16,3 +16,4 @@ CMakeCache.txt
 CMakeFiles/
 Makefile
 cmake_install.cmake
+!src/dfigPlugin.dll
