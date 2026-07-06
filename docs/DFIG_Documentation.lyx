@@ -1,0 +1,452 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_original_properties true
+\layoutstyle default
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_style 0
+\quote_delimiter English
+\quote_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Doubly-Fed Induction Generator (DFIG) Power System Dynamic Modeling & Plugin Converter
+\end_layout
+
+\begin_layout Author
+SREES Project Group
+\end_layout
+
+\begin_layout Abstract
+This document provides a comprehensive overview of the Doubly-Fed Induction Generator (DFIG) wind turbine dynamic model, its implementation using Federico Milano's dq-frame DAE representation, and the architecture of the natID plugin converter developed for the dTwin simulation platform. We outline the physical principles, mathematical formulations, software structure, and step-by-step instructions for testing and running the model on both Linux and Windows environments.
+\end_layout
+
+\begin_layout Section
+Introduction to DFIG Wind Turbines
+\end_layout
+
+\begin_layout Standard
+Doubly-Fed Induction Generators (DFIGs) are widely used in modern wind energy conversion systems due to their ability to operate over a wide range of variable wind speeds while maintaining high efficiency. Unlike traditional synchronous or fixed-speed induction generators, a DFIG wind turbine features a wound-rotor induction machine where:
+\end_layout
+
+\begin_layout Itemize
+The stator windings are directly connected to the three-phase AC power grid.
+\end_layout
+
+\begin_layout Itemize
+The rotor windings are connected to the grid via a back-to-back AC/DC/AC converter (comprising a Rotor-Side Converter, RSC, and a Grid-Side Converter, GSC).
+\end_layout
+
+\begin_layout Standard
+By controlling the rotor currents using vector control techniques, the frequency, magnitude, and phase of the rotor voltage can be adjusted. This allows decoupled control of the active and reactive power injected into the grid. The converter only needs to handle the slip power (typically 25-30% of the total rating), which significantly reduces converter costs compared to full-scale converter wind turbines.
+\end_layout
+
+\begin_layout Section
+Dynamic DAE Model of a DFIG
+\end_layout
+
+\begin_layout Standard
+The dynamic model of the DFIG wind turbine is represented as a system of Differential-Algebraic Equations (DAEs) in the dq-frame, following Federico Milano's standard formulation.
+\end_layout
+
+\begin_layout Subsection
+State Equations (ODEs)
+\end_layout
+
+\begin_layout Standard
+The DFIG has three state variables: the rotor speed 
+\begin_inset Formula $\omega_{m}$
+\end_inset
+
+, the q-axis rotor current 
+\begin_inset Formula $i_{rq}$
+\end_inset
+
+, and the d-axis rotor current 
+\begin_inset Formula $i_{rd}$
+\end_inset
+
+. Their dynamics are governed by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\omega_{m}}{dt} = \frac{\tau_{t} - \tau_{e}}{2H_{total}}
+\]
+\end_inset
+
+
+
+where 
+\begin_inset Formula $H_{total}$
+\end_inset
+
+ is the total inertia constant, 
+\begin_inset Formula $\tau_{t} = P_{opt}/\omega_{m}$
+\end_inset
+
+ is the mechanical torque from the turbine using optimal power tracking, and 
+\begin_inset Formula $\tau_{e}$
+\end_inset
+
+ is the electromagnetic torque.
+
+\end_layout
+
+\begin_layout Standard
+The rotor current dynamics are modeled using first-order lag equations representing the rotor-side converter controller:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{rq}}{dt} = \frac{1}{T_{\epsilon}} \left( -\frac{x_{s} + x_{\mu}}{x_{\mu} v_{h}} \left( \frac{P_{opt}}{\omega_{m}} \right) - i_{rq} \right)
+\]
+\end_inset
+
+
+
+where 
+\begin_inset Formula $T_{\epsilon}$
+\end_inset
+
+ is the controller time constant, 
+\begin_inset Formula $x_{s}$
+\end_inset
+
+ is stator reactance, 
+\begin_inset Formula $x_{\mu}$
+\end_inset
+
+ is mutual reactance, and 
+\begin_inset Formula $v_{h}$
+\end_inset
+
+ is the generator bus terminal voltage.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{rd}}{dt} = K_{V}(v_{h} - v_{ref}) - \frac{v_{h}}{x_{\mu}} - i_{rd}
+\]
+\end_inset
+
+
+
+where 
+\begin_inset Formula $K_{V}$
+\end_inset
+
+ is the voltage regulator gain and 
+\begin_inset Formula $v_{ref}$
+\end_inset
+
+ is the reference voltage.
+
+\end_layout
+
+\begin_layout Subsection
+Algebraic Variables & Injections
+\end_layout
+
+\begin_layout Standard
+The electromagnetic torque 
+\begin_inset Formula $\tau_{e}$
+\end_inset
+
+ is defined algebraically as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{e} = -\frac{x_{\mu} v_{h} i_{rq}}{\Omega_{b} (x_{s} + x_{\mu})}
+\]
+\end_inset
+
+
+
+where 
+\begin_inset Formula $\Omega_{b}$
+\end_inset
+
+ is the base frequency. The active and reactive power injected by the DFIG into the grid at the generator bus are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P_{h} = -\frac{x_{\mu} v_{h} i_{rq}}{x_{s} + x_{\mu}}
+\]
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Q_{h} = -\frac{x_{\mu} v_{h} i_{rd}}{x_{s} + x_{\mu}} - \frac{v_{h}^2}{x_{\mu}}
+\]
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Section
+Program Architecture & Conversion Pipeline
+\end_layout
+
+\begin_layout Standard
+The plugin converter parses an IEEE power system XML configuration file (such as 9-bus, 30-bus, 118-bus, or 300-bus systems) and generates a 
+\begin_inset Quotes eld
+\end_inset
+
+.dmodl
+\begin_inset Quotes erd
+\end_inset
+
+ digital model file and a 
+\begin_inset Quotes eld
+\end_inset
+
+.vmodl
+\begin_inset Quotes erd
+\end_inset
+
+ visual model file.
+\end_layout
+
+\begin_layout Subsection
+ModelConverter Stages
+\end_layout
+
+\begin_layout Standard
+The class 
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+ModelConverter
+\end_layout
+\end_inset
+
+ performs the following pipeline stages:
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 1: XML Parsing
+\series default
+ – Reads the XML input for buses, branches, generators, DFIG defaults, and standard generator parameters.
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 2: DFIG Assignment
+\series default
+ – Flags selected generators as DFIG based on the user-configured list (e.g., generator 2) and applies parameter overrides.
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 3: Matrix Construction
+\series default
+ – Builds natID native structures, including the sparse complex admittance matrix (Y-bus) and dense voltage/generator matrices.
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 4: Write DMODL Header
+\series default
+ – Emits the simulation configurations (startTime, dTime, endTime, maxIter, report).
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 5: Variables Section
+\series default
+ – Declares state variables along with their initial numeric values.
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 6: Parameter Section
+\series default
+ – Emits constants, machine parameters, and registers algebraic outputs (P_e, P_h, Q_h) as 
+\begin_inset Formula $[out=true]$
+\end_inset
+
+.
+\end_layout
+\end_layout
+
+\begin_layout Enumerate
+\begin_layout Standard
+\series bold
+Stage 7: Equations & Post-Processing
+\series default
+ – Emits state equations in 
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+ODEs:
+\end_layout
+\end_inset
+
+ and algebraic output calculations in 
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+PostProc:
+\end_layout
+\end_inset
+
+.
+\end_layout
+\end_layout
+
+\begin_layout Section
+Testing & Compilation
+\end_layout
+
+\begin_layout Subsection
+Linux Environment
+\end_layout
+
+\begin_layout Standard
+To compile the plugin on Linux, navigate to your build folder and run:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+cmake --build . --config Release
+\end_layout
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Standard
+To run the automated test suite and convert the IEEE 9, 30, 118, and 300-bus systems:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+./Release/test_runner /home/abu/SREES/src
+\end_layout
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Subsection
+Windows Environment
+\end_layout
+
+\begin_layout Standard
+To build on Windows, open Developer Command Prompt for VS:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status open
+\begin_layout Plain Layout
+mkdir build && cd build && cmake .. && cmake --build . --config Release
+\end_layout
+\end_inset
+
+
+
+\end_layout
+
+\begin_layout Standard
+Copy the compiled **dfigPlugin.dll** into your dTwin plugins directory. Open dTwin, go to **Import -> Vjetroelektrana DFIG Converter**, convert your XML file, and solve it!
+\end_layout
+
+\end_body
+\end_document
