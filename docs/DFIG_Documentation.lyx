@@ -2,73 +2,9 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_original_properties false
 \textclass article
 \use_default_options true
-\maintain_unincluded_children false
-\language english
-\language_package default
-\inputencoding auto
-\fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
-\font_default_family default
-\use_non_tex_fonts false
-\font_sc false
-\font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
-\use_microtype false
-\use_dash_ligatures true
-\graphics default
-\default_output_format default
-\output_sync 0
-\bibtex_command default
-\index_command default
-\paperorientation portrait
-\suppress_date false
-\justification true
-\use_refstyle 0
-\use_minted 0
-\index Index
-\shortcut idx
-\color #008000
-\end_index
-\secnumdepth 3
-\tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
-\is_math_indent 0
-\math_numbering_style default
-\quote_delimiter old
-\quote_style english
-\dynamic_quotes 0
-\papercolumns 1
-\papersize default
-\use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
-\cite_engine basic
-\cite_engine_type authoryear
-\biblio_style plain
-\use_bibtopic false
-\use_indices false
-\paperorientation portrait
-\suppress_date false
-\justification true
-\use_refstyle 0
 \end_header
-
 \begin_body
 
 \begin_layout Title
@@ -121,18 +57,12 @@ State Equations (ODEs)
 \end_layout
 
 \begin_layout Standard
-The DFIG has three state variables: the rotor speed 
-\begin_inset Formula $\omega_{m}$
+The DFIG has three state variables: the rotor speed \begin_inset Formula $\omega_{m}$
 \end_inset
-
-, the q-axis rotor current 
-\begin_inset Formula $i_{rq}$
+, the q-axis rotor current \begin_inset Formula $i_{rq}$
 \end_inset
-
-, and the d-axis rotor current 
-\begin_inset Formula $i_{rd}$
+, and the d-axis rotor current \begin_inset Formula $i_{rd}$
 \end_inset
-
 . Their dynamics are governed by:
 \end_layout
 
@@ -145,18 +75,12 @@ The DFIG has three state variables: the rotor speed
 
 
 
-where 
-\begin_inset Formula $H_{total}$
+where \begin_inset Formula $H_{total}$
 \end_inset
-
- is the total inertia constant, 
-\begin_inset Formula $\tau_{t} = P_{opt}/\omega_{m}$
+ is the total inertia constant, \begin_inset Formula $\tau_{t} = P_{opt}/\omega_{m}$
 \end_inset
-
- is the mechanical torque from the turbine using optimal power tracking, and 
-\begin_inset Formula $\tau_{e}$
+ is the mechanical torque from the turbine using optimal power tracking, and \begin_inset Formula $\tau_{e}$
 \end_inset
-
  is the electromagnetic torque.
 
 \end_layout
@@ -174,22 +98,14 @@ The rotor current dynamics are modeled using first-order lag equations represent
 
 
 
-where 
-\begin_inset Formula $T_{\epsilon}$
+where \begin_inset Formula $T_{\epsilon}$
 \end_inset
-
- is the controller time constant, 
-\begin_inset Formula $x_{s}$
+ is the controller time constant, \begin_inset Formula $x_{s}$
 \end_inset
-
- is stator reactance, 
-\begin_inset Formula $x_{\mu}$
+ is stator reactance, \begin_inset Formula $x_{\mu}$
 \end_inset
-
- is mutual reactance, and 
-\begin_inset Formula $v_{h}$
+ is mutual reactance, and \begin_inset Formula $v_{h}$
 \end_inset
-
  is the generator bus terminal voltage.
 
 \end_layout
@@ -203,14 +119,10 @@ where
 
 
 
-where 
-\begin_inset Formula $K_{V}$
+where \begin_inset Formula $K_{V}$
 \end_inset
-
- is the voltage regulator gain and 
-\begin_inset Formula $v_{ref}$
+ is the voltage regulator gain and \begin_inset Formula $v_{ref}$
 \end_inset
-
  is the reference voltage.
 
 \end_layout
@@ -220,10 +132,8 @@ Algebraic Variables & Injections
 \end_layout
 
 \begin_layout Standard
-The electromagnetic torque 
-\begin_inset Formula $\tau_{e}$
+The electromagnetic torque \begin_inset Formula $\tau_{e}$
 \end_inset
-
  is defined algebraically as:
 \end_layout
 
@@ -236,10 +146,8 @@ The electromagnetic torque
 
 
 
-where 
-\begin_inset Formula $\Omega_{b}$
+where \begin_inset Formula $\Omega_{b}$
 \end_inset
-
  is the base frequency. The active and reactive power injected by the DFIG into the grid at the generator bus are:
 \end_layout
 
@@ -270,22 +178,18 @@ Program Architecture & Conversion Pipeline
 \end_layout
 
 \begin_layout Standard
-The plugin converter parses an IEEE power system XML configuration file (such as 9-bus, 30-bus, 118-bus, or 300-bus systems) and generates a 
-\begin_inset Quotes eld
+The plugin converter parses an IEEE power system XML configuration file (such as 9-bus, 30-bus, 118-bus, or 300-bus systems) and generates a \begin_inset Quotes eld
 \end_inset
 
 .dmodl
 \begin_inset Quotes erd
 \end_inset
-
- digital model file and a 
-\begin_inset Quotes eld
+ digital model file and a \begin_inset Quotes eld
 \end_inset
 
 .vmodl
 \begin_inset Quotes erd
 \end_inset
-
  visual model file.
 \end_layout
 
@@ -294,8 +198,7 @@ ModelConverter Stages
 \end_layout
 
 \begin_layout Standard
-The class 
-\family typewriter
+The class \family typewriter
 ModelConverter
 \family default
  performs the following pipeline stages:
@@ -340,10 +243,8 @@ Stage 5: Variables Section
 \series bold
 Stage 6: Parameter Section
 \series default
- – Emits constants, machine parameters, and registers algebraic outputs (P_e, P_h, Q_h) as 
-\begin_inset Formula $[out=true]$
+ – Emits constants, machine parameters, and registers algebraic outputs (P_e, P_h, Q_h) as \begin_inset Formula $[out=true]$
 \end_inset
-
 .
 \end_layout
 
@@ -351,12 +252,10 @@ Stage 6: Parameter Section
 \series bold
 Stage 7: Equations & Post-Processing
 \series default
- – Emits state equations in 
-\family typewriter
+ – Emits state equations in \family typewriter
 ODEs:
 \family default
- and algebraic output calculations in 
-\family typewriter
+ and algebraic output calculations in \family typewriter
 PostProc:
 \family default
 .
@@ -408,13 +307,11 @@ mkdir build && cd build && cmake .. && cmake --build . --config Release
 \end_layout
 
 \begin_layout Standard
-Copy the compiled 
-\series bold
+Copy the compiled \series bold
 dfigPlugin.dll
 \series default
  into your dTwin plugins directory. Open dTwin, go to **Import -> Vjetroelektrana DFIG Converter**, convert your XML file, and solve it!
 \end_layout
-
 
 \begin_layout Section*
 References
