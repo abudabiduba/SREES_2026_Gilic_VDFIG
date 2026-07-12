@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-set(SOLUTION_NAME EQPluginSol)	#Unijeti naziv solution-a
+set(SOLUTION_NAME TestDFIGPluginSol)
 
 #BEGIN common part for all solutions
 project(${SOLUTION_NAME})
@@ -16,9 +16,11 @@ include(${NATID_SDK_ROOT}/DevEnv/Common.cmake)
 #END common part for all solutions
 
 include(${NATID_SDK_ROOT}/DevEnv/natGUI.cmake)
-include(${NATID_SDK_ROOT}/DevEnv/DataProvider.cmake) 
 include(${NATID_SDK_ROOT}/DevEnv/MatrixLib.cmake)
 
-include(EQPlugin.cmake)
+include(../dfigPlugin/dfigPlugin.cmake)
+
+include(test_runner.cmake)
+add_dependencies(${TESTRUNNER_NAME} ${DFIGPLUGIN_NAME}) 
 
 
