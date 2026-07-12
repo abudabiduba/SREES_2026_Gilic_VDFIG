@@ -1,20 +1,10 @@
-# Ignore build directories and cached files
+src/test_runner/src/testOutput/
 src/build/
 build/
+.DS_Store
+*.o
+*.obj
 *.so
 *.dll
 *.dylib
-*.a
-*.lib
-*.o
-*.obj
 .vscode/
-.DS_Store
-.idea/
-*.user
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-!src/dfigPlugin.dll
-!src/libdfigPlugin.so

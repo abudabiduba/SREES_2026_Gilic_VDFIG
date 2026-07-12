@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated IEEE case145 test case for Vjetroelektrana DFIG plugin -->
+<PowerSystem name="case145" baseMVA="100">
+
+  <DFIGDefaults xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+                KV="10.0" vref="1.0" Popt="0.5" OmegaB="314.159"
+                omega_m0="1.012" i_rq0="-0.15" i_rd0="0.05"/>
+
+  <StdGenDefaults xd_prime="0.0608" H="23.64" D="0.0"
+                  OmegaB="314.159" E_prime="1.05"
+                  delta0="0.0" omega0="1.0"/>
+
+  <Buses>
+    <Bus number="1" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.081" Va="-4.32"/>
+    <Bus number="2" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0809" Va="-4.39"/>
+    <Bus number="3" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="25.7" Vm="1.1015" Va="-4.02"/>
+    <Bus number="4" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="25.7" Vm="1.1015" Va="-4.02"/>
+    <Bus number="5" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="25.7" Vm="1.1018" Va="-4.02"/>
+    <Bus number="6" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0433" Va="-7.84"/>
+    <Bus number="7" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0763" Va="3.21"/>
+    <Bus number="8" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.1137" Va="1.15"/>
+    <Bus number="9" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0396" Va="-8.05"/>
+    <Bus number="10" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0396" Va="-8.05"/>
+    <Bus number="11" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0937" Va="-10.66"/>
+    <Bus number="12" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0389" Va="-8.77"/>
+    <Bus number="13" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0982" Va="-11.43"/>
+    <Bus number="14" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0385" Va="-9.18"/>
+    <Bus number="15" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="100" Vm="1.0683" Va="-9.81"/>
+    <Bus number="16" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="100" Vm="1.0686" Va="-9.86"/>
+    <Bus number="17" type="1" Pd="0" Qd="0" Gs="0" Bs="-250" baseKV="500" Vm="1.0012" Va="-9.44"/>
+    <Bus number="18" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="100" Vm="1.0746" Va="-10.88"/>
+    <Bus number="19" type="1" Pd="0" Qd="0" Gs="0" Bs="-58" baseKV="100" Vm="1.0708" Va="-10.96"/>
+    <Bus number="20" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.1131" Va="-10.96"/>
+    <Bus number="21" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.1086" Va="-11.24"/>
+    <Bus number="22" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0311" Va="-3.88"/>
+    <Bus number="23" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0979" Va="-5.51"/>
+    <Bus number="24" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0272" Va="2.3"/>
+    <Bus number="25" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.038" Va="-9.87"/>
+    <Bus number="26" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0894" Va="-11.37"/>
+    <Bus number="27" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="500" Vm="1.0389" Va="-13.07"/>
+    <Bus number="28" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="100" Vm="1.0762" Va="-15.28"/>
+    <Bus number="29" type="1" Pd="0" Qd="0" Gs="0" Bs="-126" baseKV="100" Vm="1.0746" Va="-15.44"/>
+    <Bus number="30" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0731" Va="-5.35"/>
+    <Bus number="31" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0905" Va="-11.81"/>
+    <Bus number="32" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0937" Va="-10.66"/>
+    <Bus number="33" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1392" Va="-4.06"/>
+    <Bus number="34" type="1" Pd="45.05" Qd="46.56" Gs="0" Bs="0" baseKV="220" Vm="1.1387" Va="-4"/>
+    <Bus number="35" type="1" Pd="49.19" Qd="27.53" Gs="0" Bs="0" baseKV="220" Vm="1.139" Va="-4.08"/>
+    <Bus number="36" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1385" Va="-3.82"/>
+    <Bus number="37" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1235" Va="-6.23"/>
+    <Bus number="38" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1306" Va="-5.29"/>
+    <Bus number="39" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.127" Va="-7.92"/>
+    <Bus number="40" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1269" Va="-7.92"/>
+    <Bus number="41" type="1" Pd="0" Qd="0" Gs="54" Bs="-10" baseKV="100" Vm="1.1188" Va="-10.43"/>
+    <Bus number="42" type="1" Pd="0" Qd="0" Gs="54.8" Bs="-10" baseKV="100" Vm="1.1188" Va="-10.45"/>
+    <Bus number="43" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1189" Va="-10.4"/>
+    <Bus number="44" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1189" Va="-10.42"/>
+    <Bus number="45" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1173" Va="-11.41"/>
+    <Bus number="46" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1173" Va="-11.41"/>
+    <Bus number="47" type="1" Pd="0" Qd="0" Gs="15.2" Bs="5.37" baseKV="100" Vm="1.1275" Va="-6.73"/>
+    <Bus number="48" type="1" Pd="0" Qd="0" Gs="13.8" Bs="5.2" baseKV="100" Vm="1.1278" Va="-6.71"/>
+    <Bus number="49" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1279" Va="-6.7"/>
+    <Bus number="50" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="220" Vm="1.1276" Va="-6.72"/>
+    <Bus number="51" type="1" Pd="58.45" Qd="28.44" Gs="0" Bs="0" baseKV="220" Vm="1.1124" Va="-10.16"/>
+    <Bus number="52" type="1" Pd="0" Qd="0" Gs="23" Bs="-9.7" baseKV="100" Vm="1.1118" Va="-11.13"/>
+    <Bus number="53" type="1" Pd="0" Qd="0" Gs="23.2" Bs="-9.7" baseKV="100" Vm="1.1118" Va="-11.13"/>
+    <Bus number="54" type="1" Pd="0" Qd="0" Gs="18.8" Bs="-9.3" baseKV="100" Vm="1.1131" Va="-11.79"/>
+    <Bus number="55" type="1" Pd="0" Qd="0" Gs="18.7" Bs="-9.2" baseKV="100" Vm="1.1131" Va="-11.79"/>
+    <Bus number="56" type="1" Pd="0" Qd="0" Gs="18.6" Bs="-7.5" baseKV="100" Vm="1.1072" Va="-9.94"/>
+    <Bus number="57" type="1" Pd="0" Qd="0" Gs="18.8" Bs="-7" baseKV="100" Vm="1.1072" Va="-9.94"/>
+    <Bus number="58" type="1" Pd="76.3" Qd="-10.8" Gs="121" Bs="140" baseKV="100" Vm="1.1067" Va="-9.76"/>
+    <Bus number="59" type="1" Pd="0" Qd="0" Gs="508" Bs="8.63" baseKV="100" Vm="1.1165" Va="-10.84"/>
+    <Bus number="60" type="2" Pd="0" Qd="0" Gs="201" Bs="165" baseKV="100" Vm="1.137" Va="-6.37"/>
+    <Bus number="61" type="1" Pd="0" Qd="0" Gs="0" Bs="149" baseKV="220" Vm="1.1144" Va="-11.89"/>
+    <Bus number="62" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="100" Vm="1.0566" Va="-14.47"/>
+    <Bus number="63" type="1" Pd="0" Qd="0" Gs="823" Bs="525" baseKV="100" Vm="1.1109" Va="-13.98"/>
+    <Bus number="64" type="1" Pd="0" Qd="0" Gs="123" Bs="-26" baseKV="100" Vm="1.098" Va="-9.29"/>
+    <Bus number="65" type="1" Pd="0" Qd="0" Gs="124" Bs="-26" baseKV="100" Vm="1.098" Va="-9.29"/>
+    <Bus number="66" type="1" Pd="102.2" Qd="26.7" Gs="216" Bs="1897" baseKV="100" Vm="1.1129" Va="1.32"/>
+    <Bus number="67" type="2" Pd="0" Qd="0" Gs="1821" Bs="1280" baseKV="100" Vm="1.09" Va="-5.66"/>
+    <Bus number="68" type="1" Pd="0" Qd="-7.41" Gs="56.3" Bs="-25" baseKV="100" Vm="1.2086" Va="-30.99"/>
+    <Bus number="69" type="1" Pd="0" Qd="0" Gs="971" Bs="-144" baseKV="100" Vm="1.0968" Va="-10.42"/>
+    <Bus number="70" type="1" Pd="0" Qd="56.63" Gs="103" Bs="-86" baseKV="100" Vm="0.9998" Va="-14.17"/>
+    <Bus number="71" type="1" Pd="0" Qd="-21.2" Gs="106" Bs="-122" baseKV="100" Vm="1.0275" Va="-14.26"/>
+    <Bus number="72" type="1" Pd="0" Qd="0" Gs="1019" Bs="24.6" baseKV="100" Vm="1.1007" Va="-11.19"/>
+    <Bus number="73" type="1" Pd="0" Qd="0" Gs="1222" Bs="841" baseKV="100" Vm="1.0975" Va="-11.06"/>
+    <Bus number="74" type="1" Pd="81.9" Qd="43.7" Gs="857" Bs="574" baseKV="100" Vm="1.0973" Va="-11.46"/>
+    <Bus number="75" type="1" Pd="0" Qd="0" Gs="387" Bs="199" baseKV="100" Vm="1.1179" Va="-15.19"/>
+    <Bus number="76" type="1" Pd="0" Qd="0" Gs="-667" Bs="-185" baseKV="100" Vm="1.0209" Va="5.54"/>
+    <Bus number="77" type="1" Pd="0" Qd="0" Gs="0" Bs="-125" baseKV="100" Vm="0.988" Va="6.72"/>
+    <Bus number="78" type="1" Pd="89" Qd="26.8" Gs="0" Bs="0" baseKV="100" Vm="1.074" Va="-5.19"/>
+    <Bus number="79" type="2" Pd="9.1" Qd="3" Gs="238" Bs="27.1" baseKV="100" Vm="1.052" Va="-9.51"/>
+    <Bus number="80" type="2" Pd="17.1" Qd="5" Gs="-0.08" Bs="29.9" baseKV="100" Vm="1.069" Va="-8.21"/>
+    <Bus number="81" type="1" Pd="82.2" Qd="-93.1" Gs="70" Bs="-47" baseKV="100" Vm="1.1304" Va="-25.86"/>
+    <Bus number="82" type="2" Pd="2.1" Qd="1.1" Gs="111" Bs="-28" baseKV="100" Vm="0.975" Va="-18.66"/>
+    <Bus number="83" type="1" Pd="0" Qd="0" Gs="105" Bs="-0.42" baseKV="100" Vm="1.0985" Va="-5.38"/>
+    <Bus number="84" type="1" Pd="24.3" Qd="8.2" Gs="0" Bs="0" baseKV="100" Vm="1.1156" Va="-9.44"/>
+    <Bus number="85" type="1" Pd="27.4" Qd="0.3" Gs="0" Bs="0" baseKV="100" Vm="1.1165" Va="-13.05"/>
+    <Bus number="86" type="1" Pd="0" Qd="0" Gs="292" Bs="-22" baseKV="100" Vm="1.0567" Va="-14.01"/>
+    <Bus number="87" type="1" Pd="0" Qd="0" Gs="37.7" Bs="-47" baseKV="100" Vm="1.0652" Va="-7.17"/>
+    <Bus number="88" type="1" Pd="69" Qd="20.9" Gs="0" Bs="0" baseKV="100" Vm="1.1094" Va="-8.35"/>
+    <Bus number="89" type="2" Pd="0.6" Qd="0.2" Gs="678" Bs="71.1" baseKV="100" Vm="1.066" Va="3.68"/>
+    <Bus number="90" type="2" Pd="4.6" Qd="1.5" Gs="29.5" Bs="-19" baseKV="100" Vm="0.95" Va="-7.35"/>
+    <Bus number="91" type="2" Pd="0" Qd="0" Gs="19.3" Bs="-27" baseKV="100" Vm="1" Va="-9.28"/>
+    <Bus number="92" type="1" Pd="0" Qd="31.02" Gs="43.4" Bs="-43" baseKV="100" Vm="0.9561" Va="-12.75"/>
+    <Bus number="93" type="2" Pd="100.4" Qd="73.2" Gs="0" Bs="0" baseKV="18.5" Vm="1" Va="-1.92"/>
+    <Bus number="94" type="2" Pd="15.4" Qd="7.6" Gs="140" Bs="-141" baseKV="100" Vm="1.02" Va="-0.74"/>
+    <Bus number="95" type="2" Pd="6.7" Qd="2.2" Gs="27.2" Bs="-58" baseKV="100" Vm="0.92" Va="18.88"/>
+    <Bus number="96" type="2" Pd="0" Qd="0" Gs="47.8" Bs="-45" baseKV="100" Vm="1" Va="-8.98"/>
+    <Bus number="97" type="2" Pd="0" Qd="0" Gs="129" Bs="-177" baseKV="100" Vm="0.967" Va="-4.34"/>
+    <Bus number="98" type="2" Pd="0" Qd="0" Gs="82.1" Bs="-121" baseKV="100" Vm="0.97" Va="5.19"/>
+    <Bus number="99" type="2" Pd="10.46" Qd="5.23" Gs="0" Bs="0" baseKV="18" Vm="1" Va="1.1"/>
+    <Bus number="100" type="2" Pd="0" Qd="0" Gs="59.1" Bs="-101" baseKV="100" Vm="1.014" Va="0.7"/>
+    <Bus number="101" type="2" Pd="17.8" Qd="4.5" Gs="64.7" Bs="-238" baseKV="100" Vm="1.039" Va="-6.09"/>
+    <Bus number="102" type="2" Pd="37.6" Qd="9.2" Gs="458" Bs="-619" baseKV="100" Vm="1.019" Va="-4.76"/>
+    <Bus number="103" type="2" Pd="0" Qd="0" Gs="62.4" Bs="-45" baseKV="100" Vm="1" Va="1.51"/>
+    <Bus number="104" type="2" Pd="30.2" Qd="7.6" Gs="0" Bs="0" baseKV="100" Vm="1.0059" Va="13.68"/>
+    <Bus number="105" type="2" Pd="96" Qd="167.4" Gs="24.2" Bs="-999" baseKV="100" Vm="1.007" Va="-2.8"/>
+    <Bus number="106" type="2" Pd="64" Qd="16" Gs="36.9" Bs="-719" baseKV="100" Vm="1.005" Va="-2.75"/>
+    <Bus number="107" type="1" Pd="-17.5" Qd="-12.8" Gs="28.8" Bs="-22" baseKV="100" Vm="1.0211" Va="-13.57"/>
+    <Bus number="108" type="2" Pd="0" Qd="0" Gs="520" Bs="-244" baseKV="100" Vm="1.014" Va="-14.03"/>
+    <Bus number="109" type="2" Pd="0" Qd="0" Gs="84.5" Bs="-47" baseKV="100" Vm="0.915" Va="-18.46"/>
+    <Bus number="110" type="2" Pd="100.4" Qd="73.2" Gs="0" Bs="0" baseKV="18.5" Vm="1" Va="-1.31"/>
+    <Bus number="111" type="2" Pd="60.4" Qd="1166" Gs="23.3" Bs="-999" baseKV="100" Vm="1" Va="7.97"/>
+    <Bus number="112" type="2" Pd="18.6" Qd="4.6" Gs="64.3" Bs="-236" baseKV="100" Vm="1.037" Va="-6.26"/>
+    <Bus number="113" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="24" Vm="0.978" Va="-4.39"/>
+    <Bus number="114" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="24" Vm="0.978" Va="-4.39"/>
+    <Bus number="115" type="2" Pd="683.5" Qd="184.7" Gs="2856" Bs="9.41" baseKV="100" Vm="1.049" Va="-15.61"/>
+    <Bus number="116" type="2" Pd="792.6" Qd="315.5" Gs="1930" Bs="-195" baseKV="100" Vm="1.043" Va="-16.86"/>
+    <Bus number="117" type="2" Pd="485.3" Qd="71.4" Gs="2410" Bs="-54" baseKV="100" Vm="1.03" Va="-15.32"/>
+    <Bus number="118" type="2" Pd="651.9" Qd="328.4" Gs="4788" Bs="-979" baseKV="100" Vm="1.01" Va="-17.79"/>
+    <Bus number="119" type="2" Pd="2094" Qd="3774" Gs="9999" Bs="-999" baseKV="100" Vm="1.013" Va="-59.41"/>
+    <Bus number="120" type="1" Pd="-408" Qd="175.1" Gs="2026" Bs="855" baseKV="100" Vm="1.0331" Va="-51.6"/>
+    <Bus number="121" type="2" Pd="237.7" Qd="-17.3" Gs="306" Bs="1055" baseKV="100" Vm="1.046" Va="-20.2"/>
+    <Bus number="122" type="2" Pd="29.2" Qd="7" Gs="397" Bs="-61" baseKV="100" Vm="1" Va="-2.79"/>
+    <Bus number="123" type="1" Pd="-84" Qd="-19" Gs="118" Bs="1.4" baseKV="100" Vm="1.0171" Va="-33.12"/>
+    <Bus number="124" type="2" Pd="94.1" Qd="780.3" Gs="766" Bs="-999" baseKV="100" Vm="1" Va="-1.89"/>
+    <Bus number="125" type="1" Pd="-712" Qd="-319" Gs="2831" Bs="-71" baseKV="100" Vm="1.0084" Va="-32.59"/>
+    <Bus number="126" type="1" Pd="-333" Qd="-160" Gs="1604" Bs="347" baseKV="100" Vm="1.0524" Va="-73.9"/>
+    <Bus number="127" type="1" Pd="-546" Qd="-72" Gs="305" Bs="-51" baseKV="100" Vm="1.007" Va="-36.4"/>
+    <Bus number="128" type="2" Pd="4075" Qd="703.5" Gs="5252" Bs="-472" baseKV="100" Vm="1.025" Va="-39.71"/>
+    <Bus number="129" type="1" Pd="-482" Qd="-122" Gs="3855" Bs="387" baseKV="100" Vm="0.9802" Va="-73.07"/>
+    <Bus number="130" type="2" Pd="4328" Qd="944.3" Gs="3830" Bs="-91" baseKV="100" Vm="1.057" Va="-51.87"/>
+    <Bus number="131" type="2" Pd="21840" Qd="4320" Gs="5145" Bs="-780" baseKV="100" Vm="1.042" Va="-24.32"/>
+    <Bus number="132" type="2" Pd="491.9" Qd="110.2" Gs="1239" Bs="-226" baseKV="100" Vm="1.042" Va="-7.24"/>
+    <Bus number="133" type="1" Pd="-83" Qd="-36.3" Gs="103" Bs="-5.9" baseKV="100" Vm="1.0922" Va="-11.6"/>
+    <Bus number="134" type="2" Pd="22309" Qd="7402" Gs="-141" Bs="-78" baseKV="100" Vm="1.044" Va="-10.82"/>
+    <Bus number="135" type="2" Pd="4298" Qd="1264" Gs="-999" Bs="835" baseKV="100" Vm="1.107" Va="29.04"/>
+    <Bus number="136" type="2" Pd="52951" Qd="13552" Gs="-999" Bs="375" baseKV="100" Vm="1.083" Va="4.39"/>
+    <Bus number="137" type="2" Pd="12946" Qd="2608" Gs="499" Bs="-219" baseKV="100" Vm="1.064" Va="-72.73"/>
+    <Bus number="138" type="1" Pd="-363" Qd="-188" Gs="433" Bs="-81" baseKV="100" Vm="1.1138" Va="12.01"/>
+    <Bus number="139" type="2" Pd="57718" Qd="13936" Gs="1609" Bs="-999" baseKV="100" Vm="1.04" Va="-10.56"/>
+    <Bus number="140" type="2" Pd="24775" Qd="6676" Gs="-289" Bs="-77" baseKV="100" Vm="1.05" Va="-26.16"/>
+    <Bus number="141" type="2" Pd="32799" Qd="11361" Gs="5212" Bs="-999" baseKV="100" Vm="1.053" Va="-9.12"/>
+    <Bus number="142" type="2" Pd="17737" Qd="3934" Gs="4323" Bs="2210" baseKV="100" Vm="1.155" Va="-10.73"/>
+    <Bus number="143" type="2" Pd="4672" Qd="1709" Gs="586" Bs="-999" baseKV="100" Vm="1.031" Va="-13.66"/>
+    <Bus number="144" type="2" Pd="9602" Qd="2203" Gs="-436" Bs="-999" baseKV="100" Vm="0.997" Va="-8.58"/>
+    <Bus number="145" type="3" Pd="9173" Qd="1555" Gs="-999" Bs="457" baseKV="100" Vm="1.052" Va="5.02"/>
+  </Buses>
+
+  <Branches>
+    <Branch from="1" to="2" r="3e-05" x="0.0008" b="0.0632" rateA="8659" tap="0" shift="0"/>
+    <Branch from="1" to="2" r="3e-05" x="0.0008" b="0.0632" rateA="0" tap="0" shift="0"/>
+    <Branch from="1" to="3" r="-0.009" x="-0.1718" b="0" rateA="0" tap="0.935" shift="0"/>
+    <Branch from="1" to="4" r="-0.009" x="-0.1718" b="0" rateA="0" tap="0.935" shift="0"/>
+    <Branch from="1" to="5" r="-0.0089" x="-0.1697" b="0" rateA="0" tap="0.935" shift="0"/>
+    <Branch from="1" to="6" r="0.00194" x="0.0209" b="2.3792" rateA="8659" tap="0" shift="0"/>
+    <Branch from="1" to="33" r="0.0001" x="0.006" b="0" rateA="750" tap="0.935" shift="0"/>
+    <Branch from="1" to="93" r="0.0002" x="0.0138" b="0" rateA="0" tap="1.1036" shift="0"/>
+    <Branch from="1" to="93" r="0.0002" x="0.0138" b="0" rateA="0" tap="1.1036" shift="0"/>
+    <Branch from="2" to="6" r="0.00194" x="0.0209" b="2.3792" rateA="8659" tap="0" shift="0"/>
+    <Branch from="2" to="113" r="0" x="0.0148" b="0" rateA="0" tap="1.1052" shift="0"/>
+    <Branch from="2" to="114" r="0.00018" x="0.0145" b="0" rateA="0" tap="1.1052" shift="0"/>
+    <Branch from="3" to="33" r="0.0002" x="0.0221" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="4" to="33" r="0.0002" x="0.0221" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="5" to="33" r="0.0002" x="0.0219" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="6" to="7" r="0.00129" x="0.0139" b="1.4652" rateA="8659" tap="0" shift="0"/>
+    <Branch from="6" to="9" r="0.00016" x="0.0017" b="0.1752" rateA="8659" tap="0" shift="0"/>
+    <Branch from="6" to="10" r="0.00016" x="0.0017" b="0.1752" rateA="8659" tap="0" shift="0"/>
+    <Branch from="6" to="12" r="0.0002" x="0.0021" b="0.8776" rateA="8659" tap="0" shift="0"/>
+    <Branch from="6" to="12" r="0.0002" x="0.0021" b="0.8776" rateA="8659" tap="0" shift="0"/>
+    <Branch from="7" to="8" r="-0.0112" x="-0.1516" b="0" rateA="0" tap="0.9716" shift="0"/>
+    <Branch from="7" to="66" r="0.00015" x="0.0097" b="0" rateA="750" tap="0.9716" shift="0"/>
+    <Branch from="7" to="104" r="0.00036" x="0.019" b="0" rateA="0" tap="1.1052" shift="0"/>
+    <Branch from="7" to="104" r="0.00041" x="0.0174" b="0" rateA="0" tap="1.1052" shift="0"/>
+    <Branch from="8" to="66" r="0.0002" x="0.0299" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="8" to="66" r="0.0002" x="0.0221" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="9" to="11" r="-0.0217" x="-0.3062" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="9" to="69" r="0.0004" x="0.0188" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="10" to="32" r="-0.027" x="-0.3041" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="10" to="69" r="0.0004" x="0.0187" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="11" to="69" r="0.0002" x="0.0262" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="12" to="13" r="-0.0223" x="-0.3099" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="12" to="13" r="-0.0237" x="-0.316" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="12" to="13" r="-0.0237" x="-0.316" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="12" to="14" r="0.00096" x="0.0091" b="0.8556" rateA="8659" tap="0" shift="0"/>
+    <Branch from="12" to="14" r="0.00096" x="0.0091" b="0.8556" rateA="8659" tap="0" shift="0"/>
+    <Branch from="12" to="25" r="0.00051" x="0.0055" b="0.625" rateA="8659" tap="0" shift="0"/>
+    <Branch from="12" to="25" r="0.00051" x="0.0055" b="0.625" rateA="8659" tap="0" shift="0"/>
+    <Branch from="12" to="72" r="0.0003" x="0.0189" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="12" to="72" r="0.0003" x="0.019" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="12" to="72" r="0.0003" x="0.019" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="13" to="72" r="0.0002" x="0.026" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="13" to="72" r="0.0003" x="0.0262" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="13" to="72" r="0.0002" x="0.026" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="14" to="15" r="-0.0415" x="-0.3996" b="0" rateA="0" tap="0.9164" shift="0"/>
+    <Branch from="14" to="16" r="-0.01" x="-0.1669" b="0" rateA="0" tap="0.9164" shift="0"/>
+    <Branch from="14" to="17" r="0.00339" x="0.0367" b="3.4582" rateA="8659" tap="0" shift="0"/>
+    <Branch from="14" to="17" r="0.00352" x="0.0367" b="3.4516" rateA="8659" tap="0" shift="0"/>
+    <Branch from="14" to="58" r="0.0002" x="0.0097" b="0" rateA="750" tap="0.9164" shift="0"/>
+    <Branch from="15" to="58" r="0.0002" x="0.0255" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="16" to="58" r="0.0002" x="0.022" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="17" to="18" r="-0.3181" x="-1.315" b="0" rateA="0" tap="0.8708" shift="0"/>
+    <Branch from="17" to="19" r="0" x="-0.847" b="0" rateA="0" tap="0.8634" shift="0"/>
+    <Branch from="17" to="20" r="0" x="-0.8676" b="0" rateA="0" tap="0.8634" shift="0"/>
+    <Branch from="17" to="21" r="-0.0095" x="-0.1615" b="0" rateA="0" tap="0.8708" shift="0"/>
+    <Branch from="17" to="22" r="0.00228" x="0.0276" b="2.6204" rateA="8659" tap="0" shift="0"/>
+    <Branch from="17" to="59" r="0.0001" x="0.0071" b="0" rateA="750" tap="0.8708" shift="0"/>
+    <Branch from="18" to="59" r="0.0002" x="0.0298" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="19" to="59" r="0" x="0.0629" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="20" to="59" r="0" x="0.0638" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="21" to="59" r="0.0002" x="0.0329" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="22" to="23" r="0" x="-0.3787" b="0" rateA="0" tap="0.9322" shift="0"/>
+    <Branch from="22" to="24" r="0.00173" x="0.0208" b="1.9648" rateA="8659" tap="0" shift="0"/>
+    <Branch from="22" to="30" r="0" x="-0.3066" b="0" rateA="0" tap="0.9532" shift="0"/>
+    <Branch from="22" to="78" r="0" x="0.0268" b="0" rateA="0" tap="0.9532" shift="0"/>
+    <Branch from="22" to="83" r="0" x="0.0349" b="0" rateA="0" tap="0.9322" shift="0"/>
+    <Branch from="23" to="83" r="0.0004" x="0.0595" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="23" to="83" r="0.0003" x="0.0597" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="24" to="76" r="0.0002" x="0.0088" b="0" rateA="0" tap="0.9898" shift="0"/>
+    <Branch from="24" to="77" r="-0.0023" x="-0.0603" b="0" rateA="0" tap="0.9898" shift="0"/>
+    <Branch from="25" to="26" r="-0.006" x="-0.1375" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="25" to="27" r="0.0023" x="0.0266" b="3.0508" rateA="8659" tap="0" shift="0"/>
+    <Branch from="25" to="27" r="0.0023" x="0.0266" b="3.0508" rateA="8659" tap="0" shift="0"/>
+    <Branch from="25" to="31" r="-0.0082" x="-0.1648" b="0" rateA="0" tap="0.9166" shift="0"/>
+    <Branch from="25" to="73" r="0.0003" x="0.0172" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="25" to="74" r="0.0004" x="0.0179" b="0" rateA="750" tap="0.9166" shift="0"/>
+    <Branch from="26" to="73" r="0.0003" x="0.0267" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="27" to="28" r="-0.1153" x="-0.7453" b="0" rateA="0" tap="0.9074" shift="0"/>
+    <Branch from="27" to="29" r="-0.0163" x="-0.2618" b="0" rateA="0" tap="0.9074" shift="0"/>
+    <Branch from="27" to="75" r="0.00016" x="0.01" b="0" rateA="750" tap="0.9074" shift="0"/>
+    <Branch from="28" to="75" r="0.0002" x="0.029" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="29" to="75" r="0.0002" x="0.0269" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="30" to="78" r="0" x="0.0335" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="31" to="74" r="0.0003" x="0.0279" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="32" to="69" r="0.0002" x="0.0265" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="33" to="34" r="6e-05" x="0.0009" b="0.0006" rateA="788" tap="0" shift="0"/>
+    <Branch from="33" to="35" r="6e-05" x="0.0009" b="0.0006" rateA="490" tap="0" shift="0"/>
+    <Branch from="33" to="37" r="0.00996" x="0.0707" b="0.1116" rateA="0" tap="0" shift="0"/>
+    <Branch from="33" to="38" r="0.00995" x="0.0693" b="0.111" rateA="1155" tap="0" shift="0"/>
+    <Branch from="33" to="39" r="0.0085" x="0.0699" b="0.1006" rateA="1208" tap="0" shift="0"/>
+    <Branch from="33" to="40" r="0.00849" x="0.0698" b="0.1004" rateA="1208" tap="0" shift="0"/>
+    <Branch from="33" to="49" r="0.0056" x="0.0493" b="0.0778" rateA="1078" tap="0" shift="0"/>
+    <Branch from="33" to="50" r="0.0056" x="0.0493" b="0.0778" rateA="1078" tap="0" shift="0"/>
+    <Branch from="33" to="110" r="0.00024" x="0.0157" b="0" rateA="0" tap="1.18" shift="0"/>
+    <Branch from="33" to="110" r="0.00023" x="0.0156" b="0" rateA="0" tap="1.18" shift="0"/>
+    <Branch from="34" to="36" r="0.00025" x="0.0022" b="0.0006" rateA="788" tap="0" shift="0"/>
+    <Branch from="36" to="99" r="0.0008" x="0.0455" b="0" rateA="0" tap="1.1291" shift="0"/>
+    <Branch from="37" to="87" r="0.00093" x="0.0442" b="0" rateA="0" tap="1.05" shift="0"/>
+    <Branch from="37" to="88" r="0.0031" x="0.1651" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="38" to="88" r="0.0031" x="0.1638" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="39" to="43" r="0.00602" x="0.0495" b="0.0712" rateA="1208" tap="0" shift="0"/>
+    <Branch from="39" to="84" r="0.00722" x="0.2786" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="40" to="44" r="0.00603" x="0.0496" b="0.0714" rateA="1208" tap="0" shift="0"/>
+    <Branch from="40" to="84" r="0.00729" x="0.2756" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="41" to="42" r="0.0005" x="0.1514" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="41" to="43" r="1e-05" x="0.0009" b="0.0006" rateA="0" tap="1" shift="0"/>
+    <Branch from="42" to="44" r="1e-05" x="0.0009" b="0.0006" rateA="0" tap="1" shift="0"/>
+    <Branch from="43" to="46" r="0.00618" x="0.0508" b="0.0732" rateA="1208" tap="0" shift="0"/>
+    <Branch from="44" to="45" r="0.00618" x="0.0508" b="0.0732" rateA="1208" tap="0" shift="0"/>
+    <Branch from="45" to="61" r="0.00445" x="0.0366" b="0.0526" rateA="1208" tap="0" shift="0"/>
+    <Branch from="45" to="85" r="0" x="0.26" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="46" to="61" r="0.00445" x="0.0366" b="0.0526" rateA="1208" tap="0" shift="0"/>
+    <Branch from="46" to="85" r="0" x="0.2592" b="0" rateA="0" tap="1" shift="0"/>
+    <Branch from="47" to="48" r="-0.01" x="0.2306" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="47" to="50" r="1e-05" x="0.0009" b="0.0006" rateA="0" tap="1" shift="0"/>
+    <Branch from="47" to="87" r="0.0831" x="0.401" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="48" to="49" r="1e-05" x="0.0009" b="0.0006" rateA="0" tap="1" shift="0"/>
+    <Branch from="48" to="87" r="0.0998" x="0.436" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="49" to="51" r="0.00898" x="0.079" b="0.1248" rateA="1078" tap="0" shift="0"/>
+    <Branch from="50" to="51" r="0.00898" x="0.079" b="0.1248" rateA="1078" tap="0" shift="0"/>
+    <Branch from="51" to="52" r="0.0029" x="0.0279" b="0.0466" rateA="858" tap="1" shift="0"/>
+    <Branch from="51" to="53" r="0.0029" x="0.0279" b="0.0466" rateA="858" tap="1" shift="0"/>
+    <Branch from="51" to="56" r="0.00759" x="0.0483" b="0.0712" rateA="1093" tap="1" shift="0"/>
+    <Branch from="51" to="57" r="0.00759" x="0.0483" b="0.0712" rateA="1093" tap="1" shift="0"/>
+    <Branch from="52" to="53" r="-0.0067" x="0.3911" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="52" to="54" r="0.0047" x="0.0293" b="0.0462" rateA="0" tap="0" shift="0"/>
+    <Branch from="53" to="55" r="0.0047" x="0.0293" b="0.0462" rateA="0" tap="0" shift="0"/>
+    <Branch from="54" to="55" r="-0.0553" x="0.9289" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="54" to="61" r="0.00141" x="0.0087" b="0.0138" rateA="390" tap="1" shift="0"/>
+    <Branch from="55" to="61" r="0.00141" x="0.0087" b="0.0138" rateA="390" tap="1" shift="0"/>
+    <Branch from="56" to="57" r="-0.009" x="0.3895" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="56" to="58" r="0.0019" x="0.012" b="0.0178" rateA="0" tap="0" shift="0"/>
+    <Branch from="57" to="58" r="0.0019" x="0.012" b="0.0178" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="59" r="0.6674" x="2.2175" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="72" r="0.0302" x="0.2364" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="87" r="0.0863" x="0.3906" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="98" r="0.0131" x="0.1765" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="100" r="0.1193" x="1.269" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="58" to="103" r="0.8416" x="5.5383" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="60" r="-0.1803" x="5.9659" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="72" r="0.8613" x="3.0485" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="79" r="0.0099" x="0.2644" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="80" r="0.2876" x="2.3898" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="89" r="0.3421" x="9.0571" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="92" r="-0.007" x="0.5678" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="94" r="0.7041" x="5.9885" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="98" r="0.106" x="0.5845" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="100" r="0.0183" x="0.2016" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="103" r="0.0368" x="0.3341" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="59" to="107" r="0.0372" x="0.8834" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="135" r="-1.831" x="9.7964" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="79" r="-0.0375" x="1.1068" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="80" r="0.0655" x="2.6441" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="90" r="-0.0201" x="1.5135" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="92" r="-0.264" x="3.7139" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="94" r="0.0012" x="0.0775" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="95" r="-0.0855" x="0.9926" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="60" to="138" r="-0.3639" x="1.7936" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="61" to="62" r="-0.0362" x="-0.2608" b="0" rateA="0" tap="1.05" shift="0"/>
+    <Branch from="61" to="62" r="-0.0472" x="-0.5438" b="0" rateA="0" tap="1.05" shift="0"/>
+    <Branch from="61" to="63" r="0.00812" x="0.0782" b="0.1318" rateA="1331" tap="1" shift="0"/>
+    <Branch from="61" to="63" r="0.00812" x="0.0782" b="0.1318" rateA="1331" tap="1" shift="0"/>
+    <Branch from="61" to="64" r="0.00242" x="0.0318" b="0.0568" rateA="1839" tap="1" shift="0"/>
+    <Branch from="61" to="65" r="0.00242" x="0.0318" b="0.0568" rateA="1208" tap="1" shift="0"/>
+    <Branch from="61" to="86" r="0.00132" x="0.032" b="0" rateA="215" tap="1.05" shift="0"/>
+    <Branch from="61" to="86" r="0.0011" x="0.037" b="0" rateA="250" tap="1.05" shift="0"/>
+    <Branch from="61" to="86" r="0.0011" x="0.037" b="0" rateA="225" tap="1.05" shift="0"/>
+    <Branch from="62" to="86" r="0.0036" x="0.0501" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="62" to="86" r="0.0013" x="0.0838" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="64" r="0.0147" x="0.2825" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="65" r="0.0147" x="0.2813" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="66" r="0.0056" x="0.09" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="67" r="0.0321" x="0.2785" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="69" r="0.0107" x="0.1571" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="102" r="0.0106" x="0.1583" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="102" r="0.0106" x="0.1576" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="102" r="0.0107" x="0.1604" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="102" r="0.0104" x="0.1542" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="116" r="-0.3897" x="6.8588" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="117" r="0.003" x="0.056" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="118" r="-0.0125" x="0.2425" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="63" to="124" r="-0.1265" x="2.022" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="65" r="0.0013" x="0.1674" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="66" r="0.0039" x="0.0684" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="67" r="0.0233" x="0.212" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="69" r="0.0075" x="0.1196" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="97" r="-0.4336" x="8.2923" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="64" to="124" r="-0.1041" x="1.5375" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="65" to="66" r="0.0039" x="0.0682" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="65" to="67" r="0.0233" x="0.2111" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="65" to="69" r="0.0075" x="0.1191" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="65" to="97" r="-0.4292" x="8.2582" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="65" to="124" r="-0.1032" x="1.5312" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="67" r="0.0081" x="0.0675" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="68" r="-2.473" x="2.472" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="69" r="0.0028" x="0.0381" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="97" r="-0.1119" x="2.6432" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="111" r="0" x="0.0264" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="111" r="0.00057" x="0.0266" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="111" r="0" x="0.0273" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="111" r="0.00057" x="0.0264" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="66" to="124" r="-0.0283" x="0.4902" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="68" r="-3.443" x="3.7172" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="69" r="0.0061" x="0.055" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="97" r="0.0063" x="0.1166" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="119" r="-0.2213" x="9.3918" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="120" r="-0.0034" x="1.7847" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="121" r="0.0082" x="1.17" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="122" r="-0.0047" x="0.4473" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="124" r="0.0003" x="0.0065" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="125" r="0.0062" x="0.2519" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="67" to="132" r="-0.3194" x="4.3566" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="68" to="69" r="-0.692" x="0.6984" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="70" r="0.0085" x="0.3333" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="71" r="0.0075" x="0.312" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="72" r="0.0013" x="0.01" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="73" r="0.0098" x="0.0747" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="74" r="0.0135" x="0.0741" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="97" r="-0.0674" x="1.5849" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="101" r="0.0174" x="0.2188" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="112" r="0.0175" x="0.2201" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="69" to="124" r="-0.0267" x="0.3986" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="71" r="-0.4891" x="2.6613" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="72" r="-0.0062" x="0.1216" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="73" r="-0.0424" x="0.9125" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="74" r="0.0032" x="0.9138" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="101" r="-0.1248" x="1.0409" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="70" to="112" r="-0.1257" x="1.0471" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="71" to="72" r="-0.006" x="0.1138" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="71" to="73" r="-0.0409" x="0.8541" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="71" to="74" r="0.0018" x="0.8553" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="71" to="101" r="-0.1592" x="1.2303" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="71" to="112" r="-0.1603" x="1.2377" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="73" r="0.0015" x="0.0275" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="74" r="0.0028" x="0.0274" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="98" r="0.0138" x="0.2417" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="100" r="0.1337" x="1.7384" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="101" r="0.0002" x="0.0802" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="103" r="1.0224" x="7.5945" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="72" to="112" r="0.0002" x="0.0806" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="74" r="-0.0007" x="0.0393" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="75" r="0.0147" x="0.2581" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="81" r="-0.0122" x="0.3068" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="82" r="0.0036" x="2.0169" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="91" r="0.0271" x="0.5732" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="96" r="0.0245" x="0.4805" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="101" r="0.0044" x="0.6014" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="105" r="0.0007" x="0.0325" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="105" r="0.0007" x="0.0325" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="105" r="0.0006" x="0.0295" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="108" r="-0.0182" x="0.5832" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="109" r="0.0524" x="3.0059" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="112" r="0.0043" x="0.605" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="73" to="121" r="-0.0268" x="1.7653" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="75" r="0.0215" x="0.3277" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="81" r="-0.0333" x="0.4631" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="82" r="-0.0098" x="1.9859" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="91" r="0.0413" x="0.7511" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="96" r="0.435" x="7.6901" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="101" r="0.0344" x="0.6005" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="106" r="0.003" x="0.0335" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="106" r="0.0005" x="0.0328" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="108" r="-0.0187" x="0.4544" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="109" r="0.1004" x="3.4697" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="112" r="0.0345" x="0.6042" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="74" to="121" r="-0.0348" x="1.3757" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="82" r="0.0777" x="1.125" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="91" r="-0.2255" x="3.1442" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="96" r="-0.4516" x="4.631" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="108" r="0.0042" x="0.1049" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="109" r="0.1046" x="1.4465" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="75" to="121" r="0.0178" x="0.3172" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="76" to="77" r="0.0002" x="0.016" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="76" to="89" r="0.0011" x="0.0221" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="80" r="0.044" x="0.0991" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="90" r="0.0506" x="2.471" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="92" r="0.0017" x="0.3032" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="94" r="0.1275" x="1.1195" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="95" r="0.305" x="6.4154" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="79" to="107" r="0.0786" x="1.414" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="80" to="90" r="0.4658" x="5.8756" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="80" to="92" r="0.1192" x="1.5053" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="80" to="94" r="0.46" x="2.6475" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="82" to="91" r="-0.2349" x="2.4188" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="82" to="108" r="-0.0742" x="0.7278" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="82" to="109" r="-0.0071" x="0.2634" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="82" to="121" r="-0.1892" x="2.2054" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="83" to="89" r="0.0582" x="0.3855" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="89" to="103" r="-1.073" x="4.1433" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="90" to="92" r="-0.138" x="8.2959" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="90" to="94" r="0.0689" x="1.0717" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="91" to="96" r="-0.1224" x="4.2463" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="91" to="108" r="-0.1078" x="0.6994" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="91" to="109" r="-0.2699" x="4.2634" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="91" to="121" r="-0.2924" x="2.121" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="92" to="94" r="0.2883" x="3.7717" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="92" to="107" r="0.0176" x="3.0227" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="94" to="95" r="0.0534" x="0.996" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="94" to="138" r="-0.1125" x="1.8385" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="95" to="138" r="-0.0732" x="0.6389" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="96" to="108" r="-0.8215" x="6.1143" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="97" to="124" r="-0.3793" x="1.9557" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="98" to="100" r="-0.0063" x="0.3269" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="98" to="103" r="0.0544" x="1.4358" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="100" to="103" r="-0.0249" x="0.4891" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="101" to="112" r="-0.0138" x="0.361" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="102" to="117" r="-0.0003" x="0.019" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="102" to="118" r="-0.0267" x="0.3222" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="108" to="109" r="-0.0825" x="1.2713" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="108" to="121" r="-0.0009" x="0.0431" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="109" to="121" r="-0.1881" x="3.8499" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="115" to="116" r="0.0008" x="0.0291" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="115" to="117" r="-0.0092" x="0.2222" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="115" to="118" r="-0.0044" x="0.0677" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="115" to="143" r="-0.1017" x="0.4924" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="116" to="117" r="0.00191" x="0.0288" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="116" to="118" r="-0.001" x="0.044" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="116" to="143" r="-0.2187" x="1.2896" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="117" to="118" r="0.0008" x="0.0081" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="117" to="143" r="-0.0834" x="0.6854" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="118" to="131" r="-0.8925" x="6.2385" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="118" to="132" r="-0.6967" x="8.143" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="118" to="143" r="-0.0011" x="0.0231" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="120" r="0.001" x="0.0236" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="121" r="-0.011" x="0.2901" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="122" r="-0.6013" x="5.8941" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="124" r="-0.2618" x="3.394" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="125" r="-0.0082" x="0.2595" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="126" r="0.00153" x="0.0179" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="127" r="-0.1172" x="1.3932" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="128" r="-0.0054" x="0.0516" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="129" r="0.0034" x="0.0642" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="130" r="-0.0022" x="0.0163" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="131" r="-0.0044" x="0.0242" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="132" r="-0.4137" x="2.4027" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="119" to="144" r="-0.8511" x="3.8358" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="121" r="0.0009" x="0.0779" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="122" r="-0.061" x="0.9305" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="123" r="-0.0466" x="0.5011" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="124" r="-0.0259" x="0.4722" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="125" r="-0.0002" x="0.0555" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="127" r="0.002" x="0.1818" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="128" r="-0.0029" x="0.0743" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="129" r="-0.0229" x="0.4911" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="130" r="-0.1674" x="1.0675" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="131" r="-0.0687" x="0.4516" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="120" to="132" r="-0.0255" x="0.4566" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="122" r="-0.0108" x="0.483" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="123" r="-0.1712" x="1.9482" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="124" r="-0.006" x="0.3494" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="125" r="0" x="0.0124" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="127" r="-0.0204" x="0.8338" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="128" r="-0.0278" x="0.3095" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="129" r="-0.4545" x="4.254" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="131" r="-0.2183" x="1.5066" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="121" to="132" r="-0.1308" x="1.3815" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="123" r="-0.584" x="4.8609" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="124" r="-0.0009" x="0.0552" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="125" r="-0.0069" x="0.1583" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="131" r="-0.2433" x="1.935" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="132" r="-0.0187" x="0.2572" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="133" r="-0.098" x="0.9821" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="122" to="143" r="-0.0312" x="0.4888" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="123" to="124" r="-0.223" x="1.967" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="123" to="125" r="-0.0821" x="0.6062" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="123" to="131" r="-0.1783" x="1.2535" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="123" to="132" r="-0.1355" x="1.2041" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="125" r="-0.0017" x="0.0949" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="128" r="-1.153" x="8.2513" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="131" r="-0.1062" x="0.8185" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="132" r="-0.0094" x="0.1612" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="133" r="-0.0342" x="1.1798" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="124" to="143" r="-0.0078" x="0.7607" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="127" r="-0.0791" x="0.9851" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="128" r="-0.062" x="0.5991" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="129" r="-0.4217" x="3.9702" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="130" r="-1.974" x="8.4854" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="131" r="-0.1251" x="0.6939" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="125" to="132" r="-0.0536" x="0.5086" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="127" to="128" r="-0.0026" x="0.124" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="127" to="129" r="-0.0392" x="1.1082" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="128" to="129" r="-0.001" x="0.0207" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="128" to="130" r="-1.1" x="2.9924" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="128" to="131" r="-1.559" x="4.0869" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="130" to="131" r="-0.0027" x="0.0154" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="130" to="132" r="-0.6509" x="3.031" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="130" to="144" r="-0.7532" x="3.0664" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="131" to="132" r="-0.0032" x="0.0411" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="131" to="133" r="-1.077" x="5.5285" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="131" to="143" r="-0.0588" x="0.4055" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="131" to="144" r="-0.0022" x="0.0151" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="132" to="133" r="-0.0916" x="0.8229" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="132" to="143" r="-0.0049" x="0.0965" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="132" to="144" r="-0.1108" x="0.9827" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="133" to="143" r="-0.36" x="2.6309" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="131" r="-0.4042" x="0.9144" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="136" r="-0.0698" x="0.6428" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="139" r="-0.0353" x="0.166" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="141" r="-0.023" x="0.1179" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="142" r="-0.0263" x="0.1167" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="144" r="-0.0145" x="0.0435" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="134" to="145" r="-0.0034" x="0.0216" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="135" to="95" r="-0.3448" x="3.4845" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="135" to="136" r="-0.0031" x="0.0178" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="135" to="138" r="-0.0084" x="0.1729" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="135" to="141" r="-0.129" x="0.6993" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="115" r="-0.012" x="0.0855" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="116" r="-1.2" x="4.2655" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="117" r="-2.969" x="9.0875" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="118" r="-0.5749" x="1.6206" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="138" r="-0.1581" x="0.5485" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="139" r="-0.0059" x="0.0293" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="140" r="-2.403" x="9.378" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="141" r="-0.0026" x="0.0175" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="142" r="-0.0467" x="0.1709" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="143" r="-1.762" x="3.4549" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="136" to="145" r="-0.0049" x="0.0539" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="137" to="139" r="-0.0183" x="0.0936" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="137" to="140" r="-2.229" x="8.0228" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="137" to="145" r="-0.0852" x="0.4071" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="139" to="140" r="-0.0054" x="0.0239" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="139" to="141" r="-0.0083" x="0.046" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="139" to="142" r="-0.3102" x="1.267" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="139" to="145" r="-0.0009" x="0.008" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="140" to="145" r="-0.1088" x="0.48" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="115" r="-0.0007" x="0.0131" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="116" r="-0.1568" x="0.7448" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="117" r="-0.3702" x="1.382" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="118" r="-0.0414" x="0.1439" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="131" r="-0.2331" x="0.8129" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="132" r="-1.628" x="7.0936" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="142" r="-0.0018" x="0.0105" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="143" r="-0.0702" x="0.1778" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="144" r="-0.0756" x="0.2441" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="141" to="145" r="-0.0038" x="0.0358" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="115" r="-0.0166" x="0.1563" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="116" r="-0.6916" x="2.6302" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="117" r="-0.5596" x="2.2284" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="118" r="-0.0185" x="0.1037" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="119" r="-0.2742" x="1.8611" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="120" r="-0.6043" x="7.353" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="122" r="-0.2589" x="2.1732" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="124" r="-0.1736" x="2.1347" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="125" r="-1.09" x="8.616" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="130" r="-0.3608" x="1.8618" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="131" r="-0.0013" x="0.0157" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="132" r="-0.0055" x="0.081" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="133" r="-1.636" x="9.1725" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="143" r="-0.0038" x="0.0187" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="144" r="-0.002" x="0.0229" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="142" to="145" r="-0.0738" x="0.438" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="143" to="144" r="-0.4863" x="2.3282" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="144" to="145" r="-0.3835" x="1.2052" b="0" rateA="0" tap="0" shift="0"/>
+  </Branches>
+
+  <Generators>
+    <Gen bus="60" number="1" Pg="51" Qg="32.92" Qmax="53.4" Qmin="-20.4" Vs="1.137" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="67" number="2" Pg="1486" Qg="285.2" Qmax="891.6" Qmin="-594" Vs="1.09" mBase="100">
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.09" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
+    </Gen>
+    <Gen bus="79" number="3" Pg="250.2" Qg="-15.95" Qmax="150.1" Qmin="-100" Vs="1.052" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="80" number="4" Pg="47" Qg="-15.06" Qmax="28.2" Qmin="-18.8" Vs="1.069" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="82" number="5" Pg="70" Qg="17.15" Qmax="42" Qmin="-28" Vs="0.975" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="89" number="6" Pg="673" Qg="136.39" Qmax="403.8" Qmin="-269" Vs="1.066" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="90" number="7" Pg="22" Qg="-3.87" Qmax="13.2" Qmin="-8.8" Vs="0.95" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="91" number="8" Pg="64" Qg="-1.54" Qmax="38.4" Qmin="-25.6" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="93" number="9" Pg="700" Qg="373.81" Qmax="766" Qmin="-520" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="94" number="10" Pg="300" Qg="19.05" Qmax="288" Qmin="-192" Vs="1.02" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="95" number="11" Pg="131" Qg="10.12" Qmax="108.6" Qmin="-72.4" Vs="0.92" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="96" number="12" Pg="60" Qg="21.11" Qmax="36" Qmin="-24" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="97" number="13" Pg="140" Qg="45.63" Qmax="84" Qmin="-56" Vs="0.967" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="98" number="14" Pg="426" Qg="-32.73" Qmax="255.6" Qmin="-170" Vs="0.97" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="99" number="15" Pg="200" Qg="-8.36" Qmax="110" Qmin="-110" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="100" number="16" Pg="170" Qg="58.72" Qmax="102" Qmin="-68" Vs="1.014" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="101" number="17" Pg="310.9" Qg="148.66" Qmax="186.5" Qmin="-124" Vs="1.039" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="102" number="18" Pg="2040" Qg="488.9" Qmax="640" Qmin="0" Vs="1.019" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="103" number="19" Pg="135" Qg="4.96" Qmax="81" Qmin="-54" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="104" number="20" Pg="2000" Qg="500" Qmax="500" Qmin="0" Vs="1.045" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="105" number="21" Pg="1620" Qg="388.34" Qmax="1008" Qmin="0" Vs="1.007" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="106" number="22" Pg="1080" Qg="209.36" Qmax="671" Qmin="0" Vs="1.005" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="108" number="23" Pg="800" Qg="77.28" Qmax="480" Qmin="-320" Vs="1.014" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="109" number="24" Pg="52" Qg="-15.55" Qmax="31.2" Qmin="-20.8" Vs="0.915" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="110" number="25" Pg="700" Qg="519.84" Qmax="766" Qmin="0" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="111" number="26" Pg="2000" Qg="563.72" Qmax="1000" Qmin="0" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="112" number="27" Pg="300" Qg="140.11" Qmax="160" Qmin="0" Vs="1.037" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="115" number="28" Pg="2493" Qg="142.72" Qmax="1496" Qmin="-997" Vs="1.049" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="116" number="29" Pg="2713" Qg="631.84" Qmax="1628" Qmin="-1085" Vs="1.043" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="117" number="30" Pg="2627" Qg="258.54" Qmax="1576" Qmin="-1051" Vs="1.03" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="118" number="31" Pg="4220" Qg="660.38" Qmax="2532" Qmin="-1688" Vs="1.01" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="119" number="32" Pg="8954" Qg="4748.48" Qmax="5373" Qmin="-3582" Vs="1.013" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="121" number="33" Pg="2997" Qg="-160.22" Qmax="1798" Qmin="-1199" Vs="1.046" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="122" number="34" Pg="1009" Qg="174.04" Qmax="605.4" Qmin="-404" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="124" number="35" Pg="3005" Qg="569.19" Qmax="1803" Qmin="-1202" Vs="1" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="128" number="36" Pg="12963" Qg="2610.82" Qmax="7778" Qmin="-5185" Vs="1.025" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="130" number="37" Pg="5937" Qg="1834.96" Qmax="3562" Qmin="-2375" Vs="1.057" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="131" number="38" Pg="28300" Qg="7473.04" Qmax="16980" Qmin="-9999" Vs="1.042" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="132" number="39" Pg="3095" Qg="633.42" Qmax="1857" Qmin="-1238" Vs="1.042" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="134" number="40" Pg="20626" Qg="7402.14" Qmax="12375" Qmin="-8250" Vs="1.044" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="135" number="41" Pg="5982" Qg="1564.84" Qmax="3589" Qmin="-2393" Vs="1.107" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="136" number="42" Pg="51950" Qg="14453.5" Qmax="31170" Qmin="-9999" Vs="1.083" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="137" number="43" Pg="12068" Qg="3450.76" Qmax="7241" Qmin="-4827" Vs="1.064" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="139" number="44" Pg="56834" Qg="15849.65" Qmax="34100" Qmin="-9999" Vs="1.04" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="140" number="45" Pg="23123" Qg="6710.47" Qmax="13874" Qmin="-9249" Vs="1.05" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="141" number="46" Pg="37911" Qg="11669.52" Qmax="22747" Qmin="-9999" Vs="1.053" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="142" number="47" Pg="24449" Qg="5496.12" Qmax="14670" Qmin="-9780" Vs="1.155" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="143" number="48" Pg="5254" Qg="2158.63" Qmax="3152" Qmin="-2101" Vs="1.031" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="144" number="49" Pg="11397" Qg="2686.85" Qmax="6838" Qmin="-4559" Vs="0.997" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="145" number="50" Pg="14118.62" Qg="2987.15" Qmax="9999" Qmin="-9999" Vs="1.052" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+  </Generators>
+
+</PowerSystem>

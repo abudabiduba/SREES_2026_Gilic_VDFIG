@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated IEEE case14 test case for Vjetroelektrana DFIG plugin -->
+<PowerSystem name="case14" baseMVA="100">
+
+  <DFIGDefaults xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+                KV="10.0" vref="1.0" Popt="0.5" OmegaB="314.159"
+                omega_m0="1.012" i_rq0="-0.15" i_rd0="0.05"/>
+
+  <StdGenDefaults xd_prime="0.0608" H="23.64" D="0.0"
+                  OmegaB="314.159" E_prime="1.05"
+                  delta0="0.0" omega0="1.0"/>
+
+  <Buses>
+    <Bus number="1" type="3" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="0" Vm="1.06" Va="0"/>
+    <Bus number="2" type="2" Pd="21.7" Qd="12.7" Gs="0" Bs="0" baseKV="0" Vm="1.045" Va="-4.98"/>
+    <Bus number="3" type="2" Pd="94.2" Qd="19" Gs="0" Bs="0" baseKV="0" Vm="1.01" Va="-12.72"/>
+    <Bus number="4" type="1" Pd="47.8" Qd="-3.9" Gs="0" Bs="0" baseKV="0" Vm="1.019" Va="-10.33"/>
+    <Bus number="5" type="1" Pd="7.6" Qd="1.6" Gs="0" Bs="0" baseKV="0" Vm="1.02" Va="-8.78"/>
+    <Bus number="6" type="2" Pd="11.2" Qd="7.5" Gs="0" Bs="0" baseKV="0" Vm="1.07" Va="-14.22"/>
+    <Bus number="7" type="1" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="0" Vm="1.062" Va="-13.37"/>
+    <Bus number="8" type="2" Pd="0" Qd="0" Gs="0" Bs="0" baseKV="0" Vm="1.09" Va="-13.36"/>
+    <Bus number="9" type="1" Pd="29.5" Qd="16.6" Gs="0" Bs="19" baseKV="0" Vm="1.056" Va="-14.94"/>
+    <Bus number="10" type="1" Pd="9" Qd="5.8" Gs="0" Bs="0" baseKV="0" Vm="1.051" Va="-15.1"/>
+    <Bus number="11" type="1" Pd="3.5" Qd="1.8" Gs="0" Bs="0" baseKV="0" Vm="1.057" Va="-14.79"/>
+    <Bus number="12" type="1" Pd="6.1" Qd="1.6" Gs="0" Bs="0" baseKV="0" Vm="1.055" Va="-15.07"/>
+    <Bus number="13" type="1" Pd="13.5" Qd="5.8" Gs="0" Bs="0" baseKV="0" Vm="1.05" Va="-15.16"/>
+    <Bus number="14" type="1" Pd="14.9" Qd="5" Gs="0" Bs="0" baseKV="0" Vm="1.036" Va="-16.04"/>
+  </Buses>
+
+  <Branches>
+    <Branch from="1" to="2" r="0.01938" x="0.05917" b="0.0528" rateA="0" tap="0" shift="0"/>
+    <Branch from="1" to="5" r="0.05403" x="0.22304" b="0.0492" rateA="0" tap="0" shift="0"/>
+    <Branch from="2" to="3" r="0.04699" x="0.19797" b="0.0438" rateA="0" tap="0" shift="0"/>
+    <Branch from="2" to="4" r="0.05811" x="0.17632" b="0.034" rateA="0" tap="0" shift="0"/>
+    <Branch from="2" to="5" r="0.05695" x="0.17388" b="0.0346" rateA="0" tap="0" shift="0"/>
+    <Branch from="3" to="4" r="0.06701" x="0.17103" b="0.0128" rateA="0" tap="0" shift="0"/>
+    <Branch from="4" to="5" r="0.01335" x="0.04211" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="4" to="7" r="0" x="0.20912" b="0" rateA="0" tap="0.978" shift="0"/>
+    <Branch from="4" to="9" r="0" x="0.55618" b="0" rateA="0" tap="0.969" shift="0"/>
+    <Branch from="5" to="6" r="0" x="0.25202" b="0" rateA="0" tap="0.932" shift="0"/>
+    <Branch from="6" to="11" r="0.09498" x="0.1989" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="6" to="12" r="0.12291" x="0.25581" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="6" to="13" r="0.06615" x="0.13027" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="7" to="8" r="0" x="0.17615" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="7" to="9" r="0" x="0.11001" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="9" to="10" r="0.03181" x="0.0845" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="9" to="14" r="0.12711" x="0.27038" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="10" to="11" r="0.08205" x="0.19207" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="12" to="13" r="0.22092" x="0.19988" b="0" rateA="0" tap="0" shift="0"/>
+    <Branch from="13" to="14" r="0.17093" x="0.34802" b="0" rateA="0" tap="0" shift="0"/>
+  </Branches>
+
+  <Generators>
+    <Gen bus="1" number="1" Pg="232.4" Qg="-16.9" Qmax="10" Qmin="0" Vs="1.06" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="2" number="2" Pg="40" Qg="42.4" Qmax="50" Qmin="-40" Vs="1.045" mBase="100">
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.045" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
+    </Gen>
+    <Gen bus="3" number="3" Pg="0" Qg="23.4" Qmax="40" Qmin="0" Vs="1.01" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="6" number="4" Pg="0" Qg="12.2" Qmax="24" Qmin="-6" Vs="1.07" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+    <Gen bus="8" number="5" Pg="0" Qg="17.4" Qmax="24" Qmin="-6" Vs="1.09" mBase="100">
+      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
+              OmegaB="314.159" E_prime="1.05"
+              delta0="0.0" omega0="1.0"/>
+    </Gen>
+  </Generators>
+
+</PowerSystem>

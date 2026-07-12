@@ -101,6 +101,28 @@ extern "C"
     {
         return &s_plugin;
     }
+
+    PLUGIN_API bool convertHeadless(const char* xmlPath, const char* dmodlPath)
+    {
+        // Suppress print messages during batch conversion to keep output clean,
+        // or just let it print if needed.
+        ConvertOptions opts;
+        fo::fs::path p(xmlPath);
+        opts.modelName = p.stem().string().c_str();
+        opts.dfigGeneratorIDs = "2"; // Designate Generator 2 as DFIG wind turbine
+        opts.maxIter = 50;
+        opts.dTime = 0.001f;
+        opts.endTime = 30.0f;
+
+        arch::MemoryOut digitModel;
+        arch::MemoryOut visualModel;
+
+        ProgressCallback onProgress = [](double progress, const td::String& msg) {
+            // Optional: output progress to console during batch runs
+        };
+
+        return ModelConverter::convert(xmlPath, dmodlPath, opts, digitModel, &visualModel, onProgress);
+    }
 }
 
 // ═════════════════════════════════════════════════════════════════════
