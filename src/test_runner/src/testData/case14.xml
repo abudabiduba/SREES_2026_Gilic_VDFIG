@@ -67,9 +67,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="6" number="4" Pg="0" Qg="12.2" Qmax="24" Qmin="-6" Vs="1.07" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.07" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="8" number="5" Pg="0" Qg="17.4" Qmax="24" Qmin="-6" Vs="1.09" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"

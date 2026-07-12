@@ -636,9 +636,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="82" number="5" Pg="70" Qg="17.15" Qmax="42" Qmin="-28" Vs="0.975" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="0.975" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="89" number="6" Pg="673" Qg="136.39" Qmax="403.8" Qmin="-269" Vs="1.066" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -651,9 +651,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="91" number="8" Pg="64" Qg="-1.54" Qmax="38.4" Qmin="-25.6" Vs="1" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="93" number="9" Pg="700" Qg="373.81" Qmax="766" Qmin="-520" Vs="1" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -666,9 +666,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="95" number="11" Pg="131" Qg="10.12" Qmax="108.6" Qmin="-72.4" Vs="0.92" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="0.92" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="96" number="12" Pg="60" Qg="21.11" Qmax="36" Qmin="-24" Vs="1" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -681,9 +681,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="98" number="14" Pg="426" Qg="-32.73" Qmax="255.6" Qmin="-170" Vs="0.97" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="0.97" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="99" number="15" Pg="200" Qg="-8.36" Qmax="110" Qmin="-110" Vs="1" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -696,9 +696,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="101" number="17" Pg="310.9" Qg="148.66" Qmax="186.5" Qmin="-124" Vs="1.039" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.039" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="102" number="18" Pg="2040" Qg="488.9" Qmax="640" Qmin="0" Vs="1.019" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -711,9 +711,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="104" number="20" Pg="2000" Qg="500" Qmax="500" Qmin="0" Vs="1.045" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.045" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="105" number="21" Pg="1620" Qg="388.34" Qmax="1008" Qmin="0" Vs="1.007" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -726,9 +726,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="108" number="23" Pg="800" Qg="77.28" Qmax="480" Qmin="-320" Vs="1.014" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.014" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="109" number="24" Pg="52" Qg="-15.55" Qmax="31.2" Qmin="-20.8" Vs="0.915" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -741,9 +741,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="111" number="26" Pg="2000" Qg="563.72" Qmax="1000" Qmin="0" Vs="1" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="112" number="27" Pg="300" Qg="140.11" Qmax="160" Qmin="0" Vs="1.037" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -756,9 +756,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="116" number="29" Pg="2713" Qg="631.84" Qmax="1628" Qmin="-1085" Vs="1.043" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.043" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="117" number="30" Pg="2627" Qg="258.54" Qmax="1576" Qmin="-1051" Vs="1.03" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -771,9 +771,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="119" number="32" Pg="8954" Qg="4748.48" Qmax="5373" Qmin="-3582" Vs="1.013" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.013" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="121" number="33" Pg="2997" Qg="-160.22" Qmax="1798" Qmin="-1199" Vs="1.046" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -786,9 +786,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="124" number="35" Pg="3005" Qg="569.19" Qmax="1803" Qmin="-1202" Vs="1" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="128" number="36" Pg="12963" Qg="2610.82" Qmax="7778" Qmin="-5185" Vs="1.025" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -801,9 +801,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="131" number="38" Pg="28300" Qg="7473.04" Qmax="16980" Qmin="-9999" Vs="1.042" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.042" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="132" number="39" Pg="3095" Qg="633.42" Qmax="1857" Qmin="-1238" Vs="1.042" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -816,9 +816,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="135" number="41" Pg="5982" Qg="1564.84" Qmax="3589" Qmin="-2393" Vs="1.107" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.107" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="136" number="42" Pg="51950" Qg="14453.5" Qmax="31170" Qmin="-9999" Vs="1.083" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -831,9 +831,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="139" number="44" Pg="56834" Qg="15849.65" Qmax="34100" Qmin="-9999" Vs="1.04" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.04" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="140" number="45" Pg="23123" Qg="6710.47" Qmax="13874" Qmin="-9249" Vs="1.05" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -846,9 +846,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="142" number="47" Pg="24449" Qg="5496.12" Qmax="14670" Qmin="-9780" Vs="1.155" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.155" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
     <Gen bus="143" number="48" Pg="5254" Qg="2158.63" Qmax="3152" Qmin="-2101" Vs="1.031" mBase="100">
       <StdGen xd_prime="0.0608" H="23.64" D="0.0"
@@ -861,9 +861,9 @@
               delta0="0.0" omega0="1.0"/>
     </Gen>
     <Gen bus="145" number="50" Pg="14118.62" Qg="2987.15" Qmax="9999" Qmin="-9999" Vs="1.052" mBase="100">
-      <StdGen xd_prime="0.0608" H="23.64" D="0.0"
-              OmegaB="314.159" E_prime="1.05"
-              delta0="0.0" omega0="1.0"/>
+      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"
+            KV="10.0" vref="1.052" Popt="0.85" OmegaB="314.159"
+            omega_m0="1.012" i_rq0="-0.24" i_rd0="0.02"/>
     </Gen>
   </Generators>
 

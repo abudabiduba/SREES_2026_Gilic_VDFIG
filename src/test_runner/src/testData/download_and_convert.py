@@ -104,9 +104,23 @@ def convert_m_to_xml(m_file_path, xml_file_path, name):
             f.write(f'    <Branch from="{from_b}" to="{to_b}" r="{r}" x="{x}" b="{b}" rateA="{rate}" tap="{ratio}" shift="{shift}"/>\n')
         f.write('  </Branches>\n\n')
         
-        # Generators (we automatically designate the 2nd generator as DFIG, or the 1st if only 1 exists)
+        # Generators (designate multiple DFIG wind turbines for larger systems)
         f.write('  <Generators>\n')
-        dfig_index = 1 if len(gens) > 1 else 0
+        
+        # Define DFIG indices based on system size
+        dfig_indices = set()
+        num_gens = len(gens)
+        if num_gens <= 5:
+            # Small systems: Gen 2 and Gen 4 (if exists)
+            dfig_indices.add(1) # Gen 2
+            if num_gens > 3:
+                dfig_indices.add(3) # Gen 4
+        else:
+            # Medium/Large systems: every 3rd generator is a DFIG wind turbine
+            for idx in range(num_gens):
+                if idx % 3 == 1:
+                    dfig_indices.add(idx)
+
         for idx, g in enumerate(gens):
             # bus, Pg, Qg, Qmax, Qmin, Vg, mBase
             bus = g[0]
@@ -119,7 +133,7 @@ def convert_m_to_xml(m_file_path, xml_file_path, name):
             
             f.write(f'    <Gen bus="{bus}" number="{idx+1}" Pg="{pg}" Qg="{qg}" Qmax="{qmax}" Qmin="{qmin}" Vs="{vs}" mBase="{mbase}">\n')
             
-            if idx == dfig_index:
+            if idx in dfig_indices:
                 # DFIG Node
                 f.write('      <DFIG xs="0.01" xmu="3.5" Htotal="3.5" Teps="0.01"\n')
                 f.write(f'            KV="10.0" vref="{vs}" Popt="0.85" OmegaB="314.159"\n')
